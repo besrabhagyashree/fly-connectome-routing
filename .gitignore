@@ -18,3 +18,5 @@ extractions/
 # Large or regenerable intermediates
 results/repro_shiu/*.parquet
 results/logs/
+results/exp04_profiles/
+results/exp04_sim_vs_map_smoke.csv
