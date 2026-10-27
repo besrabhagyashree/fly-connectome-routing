@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this code or results, please cite it as below."
+title: "fly-connectome-routing: null-model tests of sensory-to-descending routing in the Drosophila connectome"
+authors:
+  - family-names: Besra
+    given-names: Bhagyashree
+    orcid: "https://orcid.org/0009-0008-6118-7602"
+repository-code: "https://github.com/besrabhagyashree/fly-connectome-routing"
+license: MIT
+date-released: 2026-10-27
+keywords:
+  - Drosophila
+  - connectome
+  - FlyWire
+  - null models
+  - computational neuroscience
+  - descending neurons
