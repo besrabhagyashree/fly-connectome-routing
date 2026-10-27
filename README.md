@@ -47,6 +47,15 @@ When the 158,808 boundary connections are locked and only the 2.54M inside conne
 | **Shiu et al. 2024 spiking model** | Reproduced: r = 0.99 over 386 neurons against published rates | [REPRODUCTIONS.md](REPRODUCTIONS.md) |
 | **Descending-neuron identities** | 1,303 / 1,305 matched to the Stürner et al. 2025 atlas; each sense lands on neurons the atlas also assigns to it | [results/dn_labels_summary.md](results/dn_labels_summary.md) |
 
+## Pipeline
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/pipeline-dark.svg">
+  <img alt="Pipeline in five lanes. FlyWire data feeds the inside-only shuffle, which feeds shortcut statistics and 70 rate-model runs. Their reach goes to a gate asking whether inside wiring matters: yes leads to scaling to 200 shuffles, no leads to comparing the simulation with Stürner's map. Stürner's table and the real run's descending neurons feed behaviour labels, then the map comparison and leakage analysis. The same rewiring code feeds the Shiu spiking model. Results flow into the preprint." src="assets/pipeline-light.svg" width="100%">
+</picture>
+
+Arrows are labelled with what moves between steps. Box outlines show status. The gate is answered by step 1's full run.
+
 ## Roadmap
 
 | Step | Question | Status |
