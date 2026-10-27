@@ -10,7 +10,7 @@
   <a href="LICENSE"><img alt="Code licence: MIT" src="https://img.shields.io/badge/code-MIT-1d1c45?style=flat-square"></a>
 </p>
 
-<p align="center"><b>Bhagyashree Besra</b> · independent research · since September 2026</p>
+<p align="center"><b>Bhagyashree Besra</b> · since September 2026</p>
 
 ---
 
