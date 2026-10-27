@@ -1,0 +1,8 @@
+sense,PR_specificity,n_DNs_listed,unique_types,frac_identified,frac_with_behaviour,frac_cluster_matches_sense,frac_DN_best_modality_matches,behaviours,types,clusters
+bilateral,38.77,39,20,1.0,0.05,0.85,1.0,DNg11: front-leg rubbing (anterior grooming),"DNp27, DNpe014, DNp19, DNp12, DNpe032, DNp41, DNp40, DNge141, DNpe027, DNpe022, DNg11, DNpe037, DNpe019, DNpe021, DNa10, DNg56, DNp47, DNpe017, DNp51, DNpe012","6x19, 16x14, 14x6"
+gustatory,12.95,13,8,1.0,0.0,0.69,0.85,none,"DNg67, DNg103, DNpe049, DNpe030, DNg48, DNg65, DNpe007, DNge031","1x7, 2x2, 12x2, 3x1, 11x1"
+hygrosensory,1.96,2,1,1.0,1.0,0.0,0.0,DNb05: steering,DNb05,9x2
+mechanosensory,41.17,41,23,1.0,0.0,1.0,1.0,none,"DNg15, DNg35, DNg84, DNg48, DNg85, DNge132, DNge036, DNg37, DNge133, DNg29, DNg87, DNge067, DNge056, DNge065, DNg81, DNge122, DNge054, DNg57, DNge100, DNp73, DNg59, DNp33, DNge057","10x13, 4x12, 3x10, 14x3, 13x2, 11x1"
+olfactory,1.05,1,1,1.0,0.0,0.0,0.0,none,DNc01,7x1
+unknown_sensory,21.97,22,14,1.0,0.09,n/a,n/a,DNg70: feeding restraint (GABAergic SEZ descending neuron),"DNp65, DNpe036, DNge172, DNge036, DNge067, DNge100, DNge063, DNg70, DNg58, DNg61, DNg85, DNge038, DNg26, DNae006","2x6, 3x5, 11x4, 12x2, 15x2, 4x1, 1x1, 6x1"
+visual,1.84,2,1,1.0,0.0,0.0,0.0,none,DNp28,5x2

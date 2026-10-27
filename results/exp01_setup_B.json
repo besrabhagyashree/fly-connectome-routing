@@ -1,0 +1,12 @@
+{
+  "channels": {
+    "bilateral": 86,
+    "gustatory": 334,
+    "hygrosensory": 74,
+    "mechanosensory": 2674,
+    "olfactory": 2281,
+    "unknown_sensory": 120,
+    "visual": 11426
+  },
+  "n_readout": 1305
+}

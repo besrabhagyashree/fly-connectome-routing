@@ -1,0 +1,20 @@
+.env
+.env.*
+.venv/
+.venv-brian/
+__pycache__/
+*.pyc
+
+# Third-party material: linked from README/PAPERS.md, not redistributed
+papers/*.pdf
+papers/*.html
+data/
+external/
+
+# Abandoned OpenRouter tooling and its outputs
+tools/
+extractions/
+
+# Large or regenerable intermediates
+results/repro_shiu/*.parquet
+results/logs/

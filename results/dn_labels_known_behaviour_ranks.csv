@@ -1,0 +1,39 @@
+label,behaviour,citation,bilateral,gustatory,hygrosensory,mechanosensory,olfactory,unknown_sensory,visual
+DNa01,steering (turning while walking),Rayshubskiy et al. 2020 bioRxiv,503,417,473,385,160,94,446
+DNa02,steering (turning while walking),Rayshubskiy et al. 2020 bioRxiv,121,394,206,839,116,108,112
+DNb05 [AMMC-Di7],steering,Cande et al. 2018 eLife; Stuerner et al. 2025 Nature,72,335,1,74,2,501,58
+DNb06,steering,Cande et al. 2018 eLife; Stuerner et al. 2025 Nature,89,584,200,266,522,375,4
+DNg02_a (DNg02),wing-stroke amplitude / flight power,Namiki et al. 2022 Curr Biol,375,1007,622,917,910,708,227
+DNg02_b (DNg02),wing-stroke amplitude / flight power,Namiki et al. 2022 Curr Biol,764,847,779,945,889,1142,723
+DNg02_c (DNg02),wing-stroke amplitude / flight power,Namiki et al. 2022 Curr Biol,736,812,419,1001,706,898,618
+DNg02_d (DNg02),wing-stroke amplitude / flight power,Namiki et al. 2022 Curr Biol,444,353,308,960,537,793,132
+DNg02_e (DNg02),wing-stroke amplitude / flight power,Namiki et al. 2022 Curr Biol,379,661,658,944,641,392,147
+DNg02_f (DNg02),wing-stroke amplitude / flight power,Namiki et al. 2022 Curr Biol,265,890,744,989,593,818,144
+DNg02_g (DNg02),wing-stroke amplitude / flight power,Namiki et al. 2022 Curr Biol,953,968,467,915,634,849,313
+DNg02_h (DNg02),wing-stroke amplitude / flight power,Namiki et al. 2022 Curr Biol,259,915,542,851,535,802,160
+DNg11,front-leg rubbing (anterior grooming),Cande et al. 2018 eLife; Guo et al. 2022 Curr Biol,18,1029,924,411,996,477,41
+DNg12_a (DNg12),head grooming (anterior grooming),Cande et al. 2018 eLife; Guo et al. 2022 Curr Biol,923,165,376,275,417,326,572
+DNg12_b (DNg12),head grooming (anterior grooming),Cande et al. 2018 eLife; Guo et al. 2022 Curr Biol,960,282,682,372,521,449,424
+DNg12_c (DNg12),head grooming (anterior grooming),Cande et al. 2018 eLife; Guo et al. 2022 Curr Biol,904,618,1066,447,1022,652,985
+DNg12_d (DNg12),head grooming (anterior grooming),Cande et al. 2018 eLife; Guo et al. 2022 Curr Biol,1014,262,616,365,610,359,547
+DNg12_e (DNg12),head grooming (anterior grooming),Cande et al. 2018 eLife; Guo et al. 2022 Curr Biol,914,181,765,260,512,391,1075
+DNg13,turning,Cande et al. 2018 eLife,191,283,606,469,173,162,193
+DNg62 [aDN1],antennal grooming,Hampel et al. 2015 eLife,589,264,266,262,85,599,690
+DNg70 [DSOG1],feeding restraint (GABAergic SEZ descending neuron),Pool et al. 2014 Neuron (file4: Neuron S0896-6273(14)00392-4),473,73,83,556,317,14,964
+DNg98 [DSOG1],feeding restraint (GABAergic SEZ descending neuron),Pool et al. 2014 Neuron (file4: Neuron S0896-6273(14)00392-4),533,109,441,675,196,186,855
+DNge078 [aDN2],antennal grooming,Hampel et al. 2015 eLife,885,248,894,75,547,48,953
+DNp01 [GF],escape take-off (Giant Fiber),von Reyn et al. 2014 Nat Neurosci; GF identity: file4 doi:10.1007/BF00603798,174,685,90,70,119,168,210
+DNp09,forward walking / object-directed stopping,Bidaye et al. 2020 Neuron; Braun et al. 2024 Nature,143,407,175,894,175,130,225
+DNp15 [DNHS1],encodes visual self-motion (optic flow),Suver et al. 2016 J Neurosci 36:11768 (file4),47,690,434,424,499,746,298
+DNp20 [DNOVS1],encodes visual self-motion (optic flow),Suver et al. 2016 J Neurosci 36:11768 (file4),274,835,395,326,879,868,6
+DNp22 [DNOVS2],encodes visual self-motion (optic flow),Suver et al. 2016 J Neurosci 36:11768 (file4),107,547,326,330,401,494,13
+DNp42,backward walking,Cande et al. 2018 eLife; Sen et al. 2019,257,74,74,737,46,249,350
+MDN (DNp50) [DNp50],backward walking (moonwalker),"Bidaye et al. 2014 Science, doi:10.1126/science.1249964",247,354,585,468,331,592,217
+oviDNa,egg-laying (oviposition),Wang et al. 2020 Nature,908,255,119,1101,589,867,974
+oviDNb,egg-laying (oviposition),Wang et al. 2020 Nature,1202,578,274,1233,772,1084,1108
+oviDNb’ (oviDNa),egg-laying (oviposition),Wang et al. 2020 Nature,1018,205,315,1145,390,1092,774
+oviDNb’ [DNpe038],egg-laying (oviposition),Wang et al. 2020 Nature,1054,170,27,1055,29,443,1061
+oviDNd [DNpe044],egg-laying (oviposition),Wang et al. 2020 Nature,1205,235,1096,1232,1040,1014,1249
+oviDNv [DNpe046],egg-laying (oviposition),Wang et al. 2020 Nature,1148,132,40,1094,10,959,1115
+oviDNx [DNpe034;pMP1],egg-laying (oviposition),Wang et al. 2020 Nature,1216,431,942,1221,856,977,1186
+oviDNx [DNpe047],egg-laying (oviposition),Wang et al. 2020 Nature,1211,782,1204,1242,1098,1182,1247
