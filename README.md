@@ -75,10 +75,14 @@ So **the boundary sets how many descending neurons a sense reaches; for multi-la
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/pipeline-dark.svg">
-  <img alt="Pipeline in five lanes. FlyWire data feeds the inside-only shuffle, which feeds shortcut statistics and 70 rate-model runs. Their reach goes to a gate asking whether inside wiring matters: yes leads to scaling to 200 shuffles, no leads to comparing the simulation with Stürner's map. Stürner's table and the real run's descending neurons feed behaviour labels, then the map comparison and leakage analysis. The same rewiring code feeds the Shiu spiking model. Results flow into the preprint." src="assets/pipeline-light.svg" width="100%">
+  <img alt="Pipeline in five lanes. FlyWire data feeds the inside-only shuffle, which feeds shortcut statistics and 70 rate-model runs. Their reach goes to a gate asking whether the real brain is more focused than the inside-only shuffles (p &lt; 0.05 for both types): yes leads to scaling to 200 shuffles, no means skip scaling. Separately, Stürner's table and the real run's descending neurons feed behaviour labels, then the map comparison and leakage analysis. The same rewiring code feeds the Shiu spiking model. Results flow into the preprint." src="assets/pipeline-light.svg" width="100%">
 </picture>
 
-Arrows are labelled with what moves between steps. Box outlines show status. Step 1 answered the gate: inside wiring matters only slightly, so the next step is the comparison with Stürner's map rather than scaling up.
+Arrows are labelled with what moves between steps. Box outlines show status.
+
+**The gate.** Rule: yes if the real brain's spread is lower than the inside-only shuffles' at p &lt; 0.05 (empirical permutation p, see Methods) for both shuffle types. Step 1 gives p = 1/36 for both, so the answer is **yes → scale to 200**. The effect is small (~0.5%), which is why more shuffles are needed to pin it down. The rule was written down after step 1 had run; it is the standard test already used throughout, and it gives the same answer as before.
+
+**Correction (28 Oct 2026).** An earlier version of this figure put the comparison with Stürner's map on the gate's "no" exit, and this README said step 1's small effect meant comparing with the map *instead of* scaling up. Both were wrong: the map comparison asks a separate question (which neurons, not how many) and does not depend on the gate, and a "yes" at the gate leads to scaling up.
 
 ## Roadmap
 
@@ -87,8 +91,8 @@ Arrows are labelled with what moves between steps. Box outlines show status. Ste
 | 1 | Does the focus survive inside-only randomisation? | 🟢 done: yes, ~99.5% survives |
 | 2 | Where do shortcuts appear, sense by sense? | 🟢 first table |
 | 3 | Which known descending neurons does each sense reach? | 🟢 done, exploratory |
-| 4 | Does the simulation agree with Stürner's structural map, and does the map survive randomisation? | 🟢 4a done: agrees (ρ 0.65); inside-only 0.51, standard 0.07 · 🟡 4b next: flow model on randomised brains |
-| 5 | Scale to 200 randomised brains per type | ⚪ optional (effect is small) |
+| 4 | Does the simulation agree with Stürner's structural map, and does the map survive randomisation? | 🟢 4a done: agrees (ρ 0.65); inside-only 0.51, standard 0.07 · 🟡 4b running: flow model on randomised brains |
+| 5 | Scale to 200 randomised brains per type (steps 1 and 4a) | ⚪ next: the gate says yes |
 | 6 | Same test in the Shiu spiking model | ⚪ planned |
 | 7 | Do shortcuts make behaviours leak into each other? | ⚪ planned |
 

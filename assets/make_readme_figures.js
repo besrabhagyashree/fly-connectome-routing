@@ -79,7 +79,7 @@ for(const [mode,c] of Object.entries(T)){
   fs.writeFileSync(`${OUT}/shuffles-${mode}.svg`,m);
 
   // Pipeline: swimlanes, labelled data flows, gate. Edit STATUS as steps progress.
-  const STATUS={data:'done',s1:'done',s2:'done',s3:'done',s4:'wait',s5:'wait',s6:'wait',s7:'wait',out:'wait'};
+  const STATUS={data:'done',s1:'done',s2:'done',s3:'done',s4:'run',s5:'wait',s6:'wait',s7:'wait',out:'wait'};
   const stc={done:mode==='light'?'#1f8a5c':'#3fcf98',run:c.amber,wait:c.muted};
   let p=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 470" ${F}><rect width="1250" height="470" fill="${c.bg}"/><defs>`;
   [['a',c.muted],['y',stc.done],['n',c.pink]].forEach(([k,f])=>{p+=`<marker id="p${k}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="${f}"/></marker>`});
@@ -93,9 +93,12 @@ for(const [mode,c] of Object.entries(T)){
   E('M205,86 V140 H316','2.7M edges',262,133);
   E('M470,140 H506','graphs',488,133);
   E('M395,166 V220 H506','70 brains',452,213);
-  E('M660,220 H711','reach',686,213);
-  E('M835,220 H886','yes',860,213,'y');
-  E('M775,248 V270','no',783,264,'n','start');
+  E('M660,220 H696','reach',678,213);
+  E('M850,220 H886','yes',868,213,'y');
+  // Gate rule (empirical permutation p, both inside-only types). The map comparison is not behind the gate.
+  E('M775,192 V170 H846','no',783,186,'n','start');
+  p+=`<text x="852" y="174" font-size="11" font-weight="700" fill="${c.pink}">skip scaling</text>`;
+  p+=`<text x="775" y="262" font-size="10" fill="${c.muted}" text-anchor="middle">p &lt; 0.05 for both types</text>`;
   E('M585,246 V270','~17 DNs per sense',593,264,'a','start');
   E('M470,300 H506','root_id',488,293);
   E('M660,300 H696','labels',678,293);
@@ -112,9 +115,9 @@ for(const [mode,c] of Object.entries(T)){
   N(320,114,'Inside-only shuffle','boundary locked',STATUS.s1);
   N(510,114,'Shortcut stats','7 senses',STATUS.s2);
   N(510,194,'Rate model runs','35 × 2 shuffles',STATUS.s1);
-  p+=`<g transform="translate(775,220)"><polygon points="0,-28 60,0 0,28 -60,0" fill="${c.bg}" stroke="${stc.done}" stroke-width="2"/>`+
-     `<text x="0" y="-3" font-size="12" font-weight="700" fill="${c.fg}" text-anchor="middle">Inside wiring</text>`+
-     `<text x="0" y="12" font-size="12" font-weight="700" fill="${c.fg}" text-anchor="middle">matters?</text></g>`;
+  p+=`<g transform="translate(775,220)"><polygon points="0,-28 75,0 0,28 -75,0" fill="${c.bg}" stroke="${stc.done}" stroke-width="2"/>`+
+     `<text x="0" y="-3" font-size="11" font-weight="700" fill="${c.fg}" text-anchor="middle">Real more focused</text>`+
+     `<text x="0" y="11" font-size="11" font-weight="700" fill="${c.fg}" text-anchor="middle">than shuffles?</text></g>`;
   N(890,194,'Scale to 200','p floor 1/201',STATUS.s5);
   N(1080,194,'Shiu spiking model','MN9 · aDN1/2',STATUS.s6);
   N(320,274,'Stürner DN table','1,315 DNs',STATUS.s3);
