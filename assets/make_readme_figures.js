@@ -79,7 +79,7 @@ for(const [mode,c] of Object.entries(T)){
   fs.writeFileSync(`${OUT}/shuffles-${mode}.svg`,m);
 
   // Pipeline: swimlanes, labelled data flows, gate. Edit STATUS as steps progress.
-  const STATUS={data:'done',s1:'done',s2:'done',s3:'done',s4:'run',s5:'wait',s6:'wait',s7:'wait',out:'wait'};
+  const STATUS={data:'done',s1:'done',s2:'done',s3:'done',s4:'done',s5:'wait',s6:'wait',s7:'wait',out:'wait'};
   const stc={done:mode==='light'?'#1f8a5c':'#3fcf98',run:c.amber,wait:c.muted};
   let p=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 470" ${F}><rect width="1250" height="470" fill="${c.bg}"/><defs>`;
   [['a',c.muted],['y',stc.done],['n',c.pink]].forEach(([k,f])=>{p+=`<marker id="p${k}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="${f}"/></marker>`});

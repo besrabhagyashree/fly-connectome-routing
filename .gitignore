@@ -20,3 +20,7 @@ results/repro_shiu/*.parquet
 results/logs/
 results/exp04_profiles/
 results/exp04_sim_vs_map_smoke.csv
+results/exp04b_layers/
+results/exp04b_nulls_smoke.csv
+results/exp04b_nulls_*.csv
+results/exp04b_dn_layers_quick.csv

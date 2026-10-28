@@ -55,10 +55,26 @@ Inside-only shuffling leaves the *spread* unchanged, but it moves *where* each s
 | **Mean** | **0.65** | **0.51 ± 0.01** | **0.07 ± 0.01** | |
 
 - The simulation **reproduces the structural map** in the real brain, so two independent methods, dynamic and static, agree.
-- **Standard randomisation erases it**; **inside-only randomisation weakens it**. No randomised brain of either kind matches the real one, for any sense (p = 1/36 each).
+- **Standard randomisation erases the match**; **inside-only randomisation weakens it** (step 4b shows why: the map itself changes). No randomised brain of either kind matches the real one, for any sense (p = 1/36 each).
 - Senses with direct routes keep their match; senses that travel through several inside layers lose 18–40% of it. Across the 6 senses the loss is perfectly ordered by direct share (Spearman ρ = −1.0; exploratory, n = 6).
 
 So **the boundary sets how many descending neurons a sense reaches; for multi-layer senses, the interior wiring sets which ones.** Details: [results/exp04_notes.md](results/exp04_notes.md).
+
+### The map itself moves (step 4b)
+
+Stürner's map was recomputed on every randomised brain with the published flow model (Schlegel et al. 2021, as used by Dorkenwald et al. 2024). Our rebuild reproduces Stürner's ranks on the real brain at ρ 0.91–0.97 for all 8 senses (bar of 0.90 set beforehand).
+
+| | Map vs real map | Simulation vs own map |
+|---|---|---|
+| Real brain | — | **0.72** |
+| Inside-only (35) | 0.57 ± 0.02 | 0.62 ± 0.01 |
+| Standard (35) | 0.09 ± 0.01 | 0.57 ± 0.02 |
+
+- **Standard shuffles replace the map**, yet the simulation still follows each brain's new map. Step 4a's drop to 0.07 was a changed map, not a broken simulation.
+- **Inside-only shuffles keep about half the map:** touch 0.91 and visual projection neurons 0.84 survive almost whole; multi-layer senses keep 0.38–0.60 (follows direct share, ρ = 0.94; exploratory, n = 6).
+- **Simulation and map agree best in the real wiring:** 0.72 vs at most 0.64 in all 70 randomised brains (p = 1/36 for both types).
+
+The step 4a conclusion now holds under two independent methods. Details: [results/exp04b_notes.md](results/exp04b_notes.md).
 
 ## Results at a glance
 
@@ -67,6 +83,7 @@ So **the boundary sets how many descending neurons a sense reaches; for multi-la
 | **Routing vs randomised brains** | Real 17.1 · degree-shuffled 122 · block-shuffled 101 (35 each, p = 1/36) | [results/exp01_notes.md](results/exp01_notes.md) |
 | **Inside-only randomisation** | Real 17.10 · inside-only 17.19 (degree) / 17.17 (block); real beats all 70 (p = 1/36 each) but by ~0.5%; boundary and invariants checked in every brain | [C1](results/exp01_routing_vs_gross_C1.csv) · [C2](results/exp01_routing_vs_gross_C2.csv) |
 | **Simulation vs Stürner's map** (step 4a) | Spearman ρ, simulated DN activity vs Stürner's rank for that sense: real 0.65 · inside-only 0.51 ± 0.01 · standard 0.07 ± 0.01 (35 each, p = 1/36) | [results/exp04_notes.md](results/exp04_notes.md) |
+| **Stürner's map on randomised brains** (step 4b) | Flow model reproduces Stürner's ranks (ρ 0.91–0.97, 8/8 senses). Map vs real map: inside-only 0.57 · standard 0.09. Simulation vs own map: real 0.72 · inside-only 0.62 · standard 0.57 (35 each, p = 1/36) | [results/exp04b_notes.md](results/exp04b_notes.md) |
 | **Shortcut statistics** | Smell → descending direct share 0.012% real vs 3.2% after shuffling; touch is the exception (27.6% direct in the real brain) | [results/exp01_smoke_paths_C.csv](results/exp01_smoke_paths_C.csv) |
 | **Shiu et al. 2024 spiking model** | Reproduced: r = 0.99 over 386 neurons against published rates | [REPRODUCTIONS.md](REPRODUCTIONS.md) |
 | **Descending-neuron identities** | 1,303 / 1,305 matched to the Stürner et al. 2025 atlas; each sense lands on neurons the atlas also assigns to it | [results/dn_labels_summary.md](results/dn_labels_summary.md) |
@@ -91,7 +108,7 @@ Arrows are labelled with what moves between steps. Box outlines show status.
 | 1 | Does the focus survive inside-only randomisation? | 🟢 done: yes, ~99.5% survives |
 | 2 | Where do shortcuts appear, sense by sense? | 🟢 first table |
 | 3 | Which known descending neurons does each sense reach? | 🟢 done, exploratory |
-| 4 | Does the simulation agree with Stürner's structural map, and does the map survive randomisation? | 🟢 4a done: agrees (ρ 0.65); inside-only 0.51, standard 0.07 · 🟡 4b running: flow model on randomised brains |
+| 4 | Does the simulation agree with Stürner's structural map, and does the map survive randomisation? | 🟢 done: agrees (ρ 0.65); inside-only shuffles keep ~half the map, standard shuffles replace it (4a + 4b) |
 | 5 | Scale to 200 randomised brains per type (steps 1 and 4a) | ⚪ next: the gate says yes |
 | 6 | Same test in the Shiu spiking model | ⚪ planned |
 | 7 | Do shortcuts make behaviours leak into each other? | ⚪ planned |
