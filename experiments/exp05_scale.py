@@ -22,10 +22,10 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-import data as fw
-import nulls
-from exp01_routing_vs_gross import boundary_masks, evaluate, make_surrogate, sensory_channels
-from exp04_sim_vs_map import load_map, score
+from flynull import data as fw
+from flynull import nulls
+from flynull.routing import boundary_masks, evaluate, make_surrogate, sensory_channels
+from flynull.stmap import load_map, score
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "results"

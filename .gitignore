@@ -24,3 +24,5 @@ results/exp04b_layers/
 results/exp04b_nulls_smoke.csv
 results/exp04b_nulls_*.csv
 results/exp04b_dn_layers_quick.csv
+
+*.egg-info/

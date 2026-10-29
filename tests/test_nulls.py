@@ -4,12 +4,13 @@ Run this before trusting any result: a null model that breaks its own invariant
 produces a difference that means nothing.
 """
 import time
+import unittest
 
 import numpy as np
 from scipy import sparse
 
-import data as fw
-import nulls
+from flynull import data as fw
+from flynull import nulls
 
 
 def subgraph(c, k=4000, seed=0):
@@ -55,6 +56,12 @@ def main():
 
     print("\nEdge overlap should fall as the ladder destroys more structure.")
     print("All invariants held." if ok_all else "INVARIANT BROKEN - do not use these results.")
+    return ok_all
+
+
+class TestNulls(unittest.TestCase):
+    def test_every_generator_keeps_its_invariants(self):
+        self.assertTrue(main())
 
 
 if __name__ == "__main__":

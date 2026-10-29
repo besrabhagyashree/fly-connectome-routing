@@ -32,5 +32,5 @@ Also note: Brian2 fell back to the numpy code-generation target for the same rea
 
 | Env | Python | For |
 |---|---|---|
-| `.venv` | 3.11.5, numpy 2.4 | our own analysis (`flynull/`) |
+| `.venv` | 3.11.5, numpy 2.4 | our own analysis (`flynull/` package, `experiments/`) |
 | `.venv-brian` | 3.11.5, numpy 1.26, brian2 2.9 | Shiu reproduction |

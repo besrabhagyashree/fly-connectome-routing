@@ -36,7 +36,7 @@ Standard randomisation spreads each sense **6–7× wider** than the real brain,
   <img alt="Three small graphs. Real: a sense reaches descending neurons through inside neurons. Standard shuffle: a one-hop shortcut from sense to descending neuron appears. Inside-only shuffle: boundary edges are locked, only inside edges move, so no shortcut can appear." src="assets/shuffles-light.svg" width="100%">
 </picture>
 
-When the 158,808 boundary connections are locked and only the 2.54M inside connections are randomised, **the focus almost entirely survives**: 17.19 (degree-preserving) and 17.17 (block-preserving) vs 17.10 in the real brain. The real brain is still more focused than all 70 inside-only brains (p = 1/36 for each type; separation z = 8.0 and 11.2), but the difference is about 0.5%, against a 6–7× gap under standard randomisation.
+When the 158,808 boundary connections are locked and only the 2.54M inside connections are randomised, **the focus almost entirely survives**: 17.19 (degree-preserving) and 17.17 (block-preserving) vs 17.10 in the real brain. The real brain is still more focused than all 70 inside-only brains (p = 1/36 for each type; separation z = 8.0 and 11.2), and than all 400 at 200 per type (step 5: p = 0.005 for each type), but the difference is about 0.5%, against a 6–7× gap under standard randomisation.
 
 So **how focused each sense is is set mostly at the brain's sensory and motor boundaries; the interior wiring adds a small but consistent sharpening.** This independently supports [Park 2026](https://arxiv.org/abs/2609.39248) at single-neuron scale and across 7 senses. The large z-scores reflect how little the inside-only brains vary, not a large effect.
 
@@ -82,6 +82,7 @@ The step 4a conclusion now holds under two independent methods. Details: [result
 |---|---|---|
 | **Routing vs randomised brains** | Real 17.1 · degree-shuffled 122 · block-shuffled 101 (35 each, p = 1/36) | [results/exp01_notes.md](results/exp01_notes.md) |
 | **Inside-only randomisation** | Real 17.10 · inside-only 17.19 (degree) / 17.17 (block); real beats all 70 (p = 1/36 each) but by ~0.5%; boundary and invariants checked in every brain | [C1](results/exp01_routing_vs_gross_C1.csv) · [C2](results/exp01_routing_vs_gross_C2.csv) |
+| **Scaled to 200 per type** (step 5) | Real beats all 200 brains of every type, p = 0.005: spread 17.10 vs 17.19 / 17.17 (inside-only) and 122 (standard); map agreement ρ 0.65 vs 0.51 / 0.52 / 0.07 | [results/exp05_notes.md](results/exp05_notes.md) |
 | **Simulation vs Stürner's map** (step 4a) | Spearman ρ, simulated DN activity vs Stürner's rank for that sense: real 0.65 · inside-only 0.51 ± 0.01 · standard 0.07 ± 0.01 (35 each, p = 1/36) | [results/exp04_notes.md](results/exp04_notes.md) |
 | **Stürner's map on randomised brains** (step 4b) | Flow model reproduces Stürner's ranks (ρ 0.91–0.97, 8/8 senses). Map vs real map: inside-only 0.57 · standard 0.09. Simulation vs own map: real 0.72 · inside-only 0.62 · standard 0.57 (35 each, p = 1/36) | [results/exp04b_notes.md](results/exp04b_notes.md) |
 | **Shortcut statistics** | Smell → descending direct share 0.012% real vs 3.2% after shuffling; touch is the exception (27.6% direct in the real brain) | [results/exp01_smoke_paths_C.csv](results/exp01_smoke_paths_C.csv) |
@@ -97,7 +98,7 @@ The step 4a conclusion now holds under two independent methods. Details: [result
 
 Arrows are labelled with what moves between steps. Box outlines show status.
 
-**The gate.** Rule: yes if the real brain's spread is lower than the inside-only shuffles' at p &lt; 0.05 (empirical permutation p, see Methods) for both shuffle types. Step 1 gives p = 1/36 for both, so the answer is **yes → scale to 200**. The effect is small (~0.5%), which is why more shuffles are needed to pin it down. The rule was written down after step 1 had run; it is the standard test already used throughout, and it gives the same answer as before.
+**The gate.** Rule: yes if the real brain's spread is lower than the inside-only shuffles' at p &lt; 0.05 (empirical permutation p, see Methods) for both shuffle types. Step 1 gives p = 1/36 for both, so the answer is **yes → scale to 200**. The effect is small (~0.5%), which is why more shuffles were needed to pin it down; at 200 per type (step 5) p = 0.005 for both. The rule was written down after step 1 had run; it is the standard test already used throughout, and it gives the same answer as before.
 
 **Correction (28 Oct 2026).** An earlier version of this figure put the comparison with Stürner's map on the gate's "no" exit, and this README said step 1's small effect meant comparing with the map *instead of* scaling up. Both were wrong: the map comparison asks a separate question (which neurons, not how many) and does not depend on the gate, and a "yes" at the gate leads to scaling up.
 
@@ -109,7 +110,7 @@ Arrows are labelled with what moves between steps. Box outlines show status.
 | 2 | Where do shortcuts appear, sense by sense? | 🟢 first table |
 | 3 | Which known descending neurons does each sense reach? | 🟢 done, exploratory |
 | 4 | Does the simulation agree with Stürner's structural map, and does the map survive randomisation? | 🟢 done: agrees (ρ 0.65); inside-only shuffles keep ~half the map, standard shuffles replace it (4a + 4b) |
-| 5 | Scale to 200 randomised brains per type (steps 1 and 4a) | ⚪ next: the gate says yes |
+| 5 | Scale to 200 randomised brains per type (steps 1 and 4a) | 🟢 done: real beats all 200 of every type (p = 0.005); every 35-brain result holds |
 | 6 | Same test in the Shiu spiking model | ⚪ planned |
 | 7 | Do shortcuts make behaviours leak into each other? | ⚪ planned |
 
@@ -142,14 +143,39 @@ Full reading list: [PAPERS.md](PAPERS.md).
 # 1. Data: FlyWire v783 Codex tables (neurons, connections, classification,
 #    consolidated_cell_types) from
 #    https://storage.googleapis.com/flywire-data/codex/data/fafb/783  ->  data/flywire783/
-# 2. Python 3.11 with numpy, scipy, pandas
-# 3. Inside-only randomisation, 35 replicates
-python flynull/exp01_routing_vs_gross.py --generators interior_degree_preserving \
+# 2. Python 3.11; install the package (pinned numpy, scipy, pandas, pyarrow)
+pip install -e .
+# 3. Tests: invariants, flow model, and (slow) brain #1 reproduces steps 1 + 4a
+python -m unittest discover -s tests
+FLYNULL_SLOW=1 python -m unittest tests.test_regression
+# 4. Inside-only randomisation, 35 replicates
+python experiments/exp01_routing_vs_gross.py --generators interior_degree_preserving \
        --n-nulls 35 --swaps-per-edge 10 --tag _C1
 ```
 
+Using the package in your own code:
+
+```python
+import numpy as np
+from flynull import data
+from flynull.routing import boundary_masks, evaluate, make_surrogate, sensory_channels
+
+c = data.load()                                     # FlyWire v783
+channels = sensory_channels(c.meta)
+readout = np.flatnonzero(c.meta["super_class"].eq("descending").to_numpy())
+sign = c.meta["nt_sign"].to_numpy()
+labels = c.meta["super_class"].fillna("na").astype("category").cat.codes.to_numpy()
+S = make_surrogate("interior_degree_preserving", c.W, np.random.default_rng(1000), sign,
+                   labels, 10, boundary_masks(c.n, channels, readout))  # inside-only shuffle
+row, profiles = evaluate(S, channels, readout, "inside-only")         # spread, separation, ...
 ```
-flynull/             data loading, null models, rate model, measures, experiments
+
+```
+flynull/             the package: data loading, null models, rate model, measures,
+                     routing, Stürner map scoring, flow model
+experiments/         one script per study step (exp01 … exp05, Shiu model runs)
+tests/               invariant, flow-model and regression tests
+scratch/             one-off inspection scripts
 results/             result tables, summaries and figures
 assets/              README figures
 REPRODUCTIONS.md     what has been checked against published numbers

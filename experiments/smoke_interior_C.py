@@ -22,10 +22,10 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-import data as fw
-import nulls
-import path_stats as ps
-from exp01_routing_vs_gross import boundary_masks, evaluate, make_surrogate, sensory_channels
+from flynull import data as fw
+from flynull import nulls
+from flynull import path_stats as ps
+from flynull.routing import boundary_masks, evaluate, make_surrogate, sensory_channels
 
 OUT = Path(__file__).resolve().parent.parent / "results"
 

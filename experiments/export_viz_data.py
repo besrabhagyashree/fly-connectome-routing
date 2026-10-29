@@ -14,9 +14,9 @@ from pathlib import Path
 
 import numpy as np
 
-import data as fw
-import nulls
-import rate_operator as op
+from flynull import data as fw
+from flynull import nulls
+from flynull import rate_operator as op
 
 OUT = Path(__file__).resolve().parent.parent / "results"
 CHANNELS = ["olfactory", "gustatory", "mechanosensory", "hygrosensory"]

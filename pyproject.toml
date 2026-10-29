@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flynull"
+version = "0.1.0"
+description = "Null models and routing measures for the FlyWire fruit-fly connectome"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Bhagyashree Besra" }]
+requires-python = ">=3.10"
+# Versions the published results were produced with.
+dependencies = [
+    "numpy==2.4.6",
+    "scipy==1.17.1",
+    "pandas==3.0.6",
+    "pyarrow==25.0.1",
+]
+
+[project.optional-dependencies]
+shiu = ["Brian2==2.9.0"]
+
+[project.urls]
+Repository = "https://github.com/besrabhagyashree/fly-connectome-routing"
+
+[tool.setuptools]
+packages = ["flynull"]

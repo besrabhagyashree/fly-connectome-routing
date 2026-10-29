@@ -25,7 +25,7 @@ import numpy as np
 from scipy import sparse
 from scipy.sparse.linalg import gmres
 
-import rate_operator as op
+from . import rate_operator as op
 
 
 def memory_capacity(W, rng, n_probe=2000, steps=1200, washout=200, max_delay=40,

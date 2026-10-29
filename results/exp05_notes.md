@@ -1,6 +1,6 @@
 # Step 5 — scaling to 200 randomised brains per type
 
-Run 28 Oct 2026 16:46 IST → 29 Oct 2026 ~08:35 IST (PC asleep 01:12–08:09 IST; jobs paused and resumed, no data lost). Driver: `flynull/exp05_scale.py`.
+Run 28 Oct 2026 16:46 IST → 29 Oct 2026 ~08:35 IST (PC asleep 01:12–08:09 IST; jobs paused and resumed, no data lost). Driver: `experiments/exp05_scale.py`.
 
 ## What was run
 

@@ -1,6 +1,6 @@
 # Step 4a — does the simulation agree with Stürner's structural map, and does the agreement survive randomisation?
 
-Script: `flynull/exp04_sim_vs_map.py`. Run 27 Oct 2026, 17:39–19:56 IST.
+Script: `experiments/exp04_sim_vs_map.py`. Run 27 Oct 2026, 17:39–19:56 IST.
 
 ## Method
 

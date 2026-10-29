@@ -29,44 +29,15 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from scipy.stats import spearmanr
 
-import data as fw
-import nulls
-from dn_labels import SENSE_TO_STURNER, MAIN_MODALITIES
-from exp01_routing_vs_gross import boundary_masks, evaluate, make_surrogate, sensory_channels
+from flynull import data as fw
+from flynull import nulls
+from flynull.routing import boundary_masks, evaluate, make_surrogate, sensory_channels
+from flynull.stmap import load_map, score
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "results"
-ST = ROOT / "data" / "external_tables" / "sturner2025"
 PROF = OUT / "exp04_profiles"
-
-
-def load_map(dn_ids):
-    """DN root_id -> Stuerner type, and the per-type modality ranks."""
-    f5 = pd.read_csv(ST / "Supplemental_file5_FAFB_DNs.tsv", sep="\t", dtype={"root_id": "int64"})
-    rk = pd.read_csv(ST / "DN_ranking_df_783_sensory_combined_byDNtype.tsv", sep="\t", index_col=0)
-    # DNg06 is listed twice (clusters 14 and 16, different ranks); drop it rather than pick one.
-    rk = rk[~rk["type"].duplicated(keep=False)].set_index("type")[MAIN_MODALITIES].astype(float)
-    typ = pd.Series(dn_ids).map(f5.drop_duplicates("root_id").set_index("root_id")["type"])
-    return typ.to_numpy(), rk
-
-
-def score(profiles, dn_type, rk):
-    """Spearman rho of type-mean |activity| vs -rank, every sense x modality."""
-    rows = []
-    for sense, mod in SENSE_TO_STURNER.items():
-        if mod is None or sense not in profiles:
-            continue
-        act = pd.Series(profiles[sense]).groupby(dn_type).mean()
-        act = act[act.index.isin(rk.index)]
-        r = {m: spearmanr(act.to_numpy(), -rk.loc[act.index, m].to_numpy()).statistic
-             for m in MAIN_MODALITIES}
-        rows.append({"sense": sense, "modality": mod, "n_types": len(act),
-                     "rho_own": r[mod], "best_modality": max(r, key=r.get),
-                     "diagonal": max(r, key=r.get) == mod,
-                     **{f"rho_{m}": v for m, v in r.items()}})
-    return pd.DataFrame(rows)
 
 
 def main():

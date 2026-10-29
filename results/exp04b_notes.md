@@ -1,6 +1,6 @@
 # Step 4b — Stürner's structural map, recomputed on randomised brains
 
-Script: `flynull/exp04b_flow_model.py`. Settings and sources: `results/exp04b_flow_settings.md`. Run 27–28 Oct 2026 (22:05 → 16:39 IST; the PC slept for ~9 h of that).
+Script: `experiments/exp04b_flow_model.py`. Settings and sources: `results/exp04b_flow_settings.md`. Run 27–28 Oct 2026 (22:05 → 16:39 IST; the PC slept for ~9 h of that).
 
 ## Question
 

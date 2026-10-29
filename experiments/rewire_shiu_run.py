@@ -33,7 +33,7 @@ OUT = ROOT / "results" / "repro_shiu"
 sys.path.insert(0, str(REPO))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-import nulls  # noqa: E402
+from flynull import nulls  # noqa: E402
 
 CON783 = REPO / "Connectivity_783.parquet"
 REWIRED = OUT / "Connectivity_783_rewired.parquet"
