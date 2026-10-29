@@ -12,11 +12,13 @@ Resumable: brains whose rates file exists are scored, not re-simulated.
 Runs in .venv-brian (Brian2 2.9, numpy 1.26):
 
   .venv-brian/Scripts/python.exe experiments/exp06_shiu_spiking.py run
+  .venv-brian/Scripts/python.exe experiments/exp06_shiu_spiking.py run --worker 1 --n-proc 1   (one of several drivers)
   .venv-brian/Scripts/python.exe experiments/exp06_shiu_spiking.py summary
 """
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 import time
 from pathlib import Path
@@ -107,7 +109,42 @@ def score(rates_file, ids, readout):
             "mn9_hz": float(s.get(MN9, 0.0))}
 
 
-def run(n_proc):
+CLAIMS = OUT / "claims"
+STALE_H = 3  # a claim with no result after this long is from a driver that died
+
+
+def free_gb():
+    """Available physical memory (Windows GlobalMemoryStatusEx; no psutil in .venv-brian)."""
+    import ctypes
+
+    class M(ctypes.Structure):
+        _fields_ = [("len", ctypes.c_ulong), ("load", ctypes.c_ulong)] + \
+                   [(f, ctypes.c_ulonglong) for f in ("tot", "avail", "tpf", "apf", "tv", "av", "ax")]
+    m = M()
+    m.len = ctypes.sizeof(M)
+    ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(m))
+    return m.avail / 2**30
+
+
+def claim(name):
+    """Atomically claim a brain for this driver; False if another live driver holds it."""
+    CLAIMS.mkdir(parents=True, exist_ok=True)
+    f = CLAIMS / f"{name}.claim"
+    if f.exists() and time.time() - f.stat().st_mtime > STALE_H * 3600:
+        f.unlink(missing_ok=True)
+    try:
+        os.close(os.open(f, os.O_CREAT | os.O_EXCL | os.O_WRONLY))
+        return True
+    except FileExistsError:
+        return False
+
+
+def run(n_proc, shard="0/1", worker=None, min_free_gb=3.0):
+    """shard i/k: fixed every-k-th split. worker w: take the next unclaimed brain (any number of drivers)."""
+    i, k = map(int, shard.split("/"))
+    tag = f"w{worker}" if worker is not None else (f"s{i}" if k > 1 else "")
+    csv = CSV.with_name(f"exp06_shiu_{tag}.csv") if tag else CSV
+    tmp = TMP.with_name(f"_surrogate_{tag}.parquet") if tag else TMP
     OUT.mkdir(parents=True, exist_ok=True)
     W, ids, sign, meta = load()
     channels = sensory_channels(meta)
@@ -117,14 +154,20 @@ def run(n_proc):
     neu = sugar_783(ids)
     print(f"{W.nnz:,} edges; {len(channels)} sensory channels; {len(readout)} DNs; "
           f"{len(neu)} sugar GRNs; {int(boundary[0].sum())} boundary sources", flush=True)
-    done = pd.read_csv(CSV) if CSV.exists() else pd.DataFrame(columns=["network", "replicate"])
-    rows = done.to_dict("records")
+    mine = pd.read_csv(csv) if csv.exists() else pd.DataFrame(columns=["network", "replicate"])
+    rows = mine.to_dict("records")
+    done = load_all()
     seen = set(zip(done["network"], done["replicate"].astype(int)))
 
-    for gen, r in schedule():
-        if (gen, r) in seen:
-            continue
+    for j, (gen, r) in enumerate(schedule()):
         name = f"{gen}_{r}"
+        if worker is None and j % k != i:
+            continue
+        if worker is not None:
+            done = load_all()
+            seen = set(zip(done["network"], done["replicate"].astype(int)))
+        if (gen, r) in seen or (worker is not None and not claim(name)):
+            continue
         t = time.time()
         ok = bok = None
         if gen == "real":
@@ -140,17 +183,27 @@ def run(n_proc):
                 print(f"{name}: invariant broken {checks}; not simulated", flush=True)
                 continue
             t_build = time.time() - t
-            write_their_format(S, ids, TMP)
+            write_their_format(S, ids, tmp)
             del S
-            simulate(name, TMP, neu, n_proc)
+            while free_gb() < min_free_gb:  # several drivers: don't start a 2.4 GB simulation into swap
+                time.sleep(30)
+            simulate(name, tmp, neu, n_proc)
         row = {"network": gen, "replicate": r, **score(OUT / f"{name}.parquet", ids, readout),
                "invariants_ok": ok, "boundary_ok": bok, "seconds": round(time.time() - t)}
         rows.append(row)
-        pd.DataFrame(rows).to_csv(CSV, index=False)
+        pd.DataFrame(rows).to_csv(csv, index=False)
         build = f" build {t_build:.0f}s" if gen != "real" else ""
         print(f"{name:32s} spread={row['spread']:.2f}  dn_active={row['dn_active']}  "
               f"({row['seconds']}s{build})", flush=True)
-    TMP.unlink(missing_ok=True)
+    tmp.unlink(missing_ok=True)
+
+
+def load_all():
+    """Rows from the single-driver CSV and every shard CSV."""
+    fs = sorted(CSV.parent.glob("exp06_shiu*.csv"))
+    if not fs:
+        return pd.DataFrame(columns=["network", "replicate", "spread"])
+    return pd.concat([pd.read_csv(f) for f in fs]).drop_duplicates(["network", "replicate"])
 
 
 def p_lower(real, null):
@@ -159,7 +212,7 @@ def p_lower(real, null):
 
 
 def summary():
-    d = pd.read_csv(CSV)
+    d = load_all()
     real = float(d.loc[d.network == "real", "spread"].iloc[0])
     rows = []
     for g in PLAN:
@@ -183,5 +236,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("stage", choices=["run", "summary"])
     ap.add_argument("--n-proc", type=int, default=3)
+    ap.add_argument("--shard", default="0/1", help="i/k: this driver runs every k-th brain, starting at i")
+    ap.add_argument("--worker", type=int, help="claim-queue mode: run as driver number W")
     a = ap.parse_args()
-    run(a.n_proc) if a.stage == "run" else summary()
+    run(a.n_proc, a.shard, a.worker) if a.stage == "run" else summary()
