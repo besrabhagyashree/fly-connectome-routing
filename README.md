@@ -112,7 +112,7 @@ Arrows are labelled with what moves between steps. Box outlines show status.
 | 3 | Which known descending neurons does each sense reach? | 🟢 done, exploratory |
 | 4 | Does the simulation agree with Stürner's structural map, and does the map survive randomisation? | 🟢 done: agrees (ρ 0.65); inside-only shuffles keep ~half the map, standard shuffles replace it (4a + 4b) |
 | 5 | Scale to 200 randomised brains per type (steps 1 and 4a) | 🟢 done: real beats all 200 of every type (p = 0.005); every 35-brain result holds |
-| 6 | Same test in the Shiu spiking model | ⚪ planned |
+| 6 | Same test in the Shiu spiking model | 🟡 running since 29 Oct: real + 50 + 50 + 19 shuffled brains in their model (15.1M connections each); rule fixed before the run ([plan](results/exp06_plan.md)); results once all 120 are in |
 | 7 | Do shortcuts make behaviours leak into each other? | 🟢 done: inside-only shuffles mix senses slightly more (separation 0.985 → 0.983, p = 0.005, rule met); standard shuffles much more (→ 0.815) |
 
 Reasoning for each step and the literature gaps it fills: [LITERATURE_GAPS.md](LITERATURE_GAPS.md).
@@ -174,7 +174,7 @@ row, profiles = evaluate(S, channels, readout, "inside-only")         # spread, 
 ```
 flynull/             the package: data loading, null models, rate model, measures,
                      routing, Stürner map scoring, flow model
-experiments/         one script per study step (exp01 … exp05, Shiu model runs)
+experiments/         one script per study step (exp01 … exp07, Shiu model runs)
 tests/               invariant, flow-model and regression tests
 scratch/             one-off inspection scripts
 results/             result tables, summaries and figures
