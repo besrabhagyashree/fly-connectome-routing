@@ -83,6 +83,7 @@ The step 4a conclusion now holds under two independent methods. Details: [result
 | **Routing vs randomised brains** | Real 17.1 · degree-shuffled 122 · block-shuffled 101 (35 each, p = 1/36) | [results/exp01_notes.md](results/exp01_notes.md) |
 | **Inside-only randomisation** | Real 17.10 · inside-only 17.19 (degree) / 17.17 (block); real beats all 70 (p = 1/36 each) but by ~0.5%; boundary and invariants checked in every brain | [C1](results/exp01_routing_vs_gross_C1.csv) · [C2](results/exp01_routing_vs_gross_C2.csv) |
 | **Scaled to 200 per type** (step 5) | Real beats all 200 brains of every type, p = 0.005: spread 17.10 vs 17.19 / 17.17 (inside-only) and 122 (standard); map agreement ρ 0.65 vs 0.51 / 0.52 / 0.07 | [results/exp05_notes.md](results/exp05_notes.md) |
+| **Cross-behaviour leakage** (step 7) | Channel separation: real 0.985 · inside-only 0.983 / 0.984 · standard 0.815 (200 each, p = 0.005; pre-registered rule met). Taste activity on non-taste DN clusters: 25% real vs 98% standard | [results/exp07_notes.md](results/exp07_notes.md) |
 | **Simulation vs Stürner's map** (step 4a) | Spearman ρ, simulated DN activity vs Stürner's rank for that sense: real 0.65 · inside-only 0.51 ± 0.01 · standard 0.07 ± 0.01 (35 each, p = 1/36) | [results/exp04_notes.md](results/exp04_notes.md) |
 | **Stürner's map on randomised brains** (step 4b) | Flow model reproduces Stürner's ranks (ρ 0.91–0.97, 8/8 senses). Map vs real map: inside-only 0.57 · standard 0.09. Simulation vs own map: real 0.72 · inside-only 0.62 · standard 0.57 (35 each, p = 1/36) | [results/exp04b_notes.md](results/exp04b_notes.md) |
 | **Shortcut statistics** | Smell → descending direct share 0.012% real vs 3.2% after shuffling; touch is the exception (27.6% direct in the real brain) | [results/exp01_smoke_paths_C.csv](results/exp01_smoke_paths_C.csv) |
@@ -112,7 +113,7 @@ Arrows are labelled with what moves between steps. Box outlines show status.
 | 4 | Does the simulation agree with Stürner's structural map, and does the map survive randomisation? | 🟢 done: agrees (ρ 0.65); inside-only shuffles keep ~half the map, standard shuffles replace it (4a + 4b) |
 | 5 | Scale to 200 randomised brains per type (steps 1 and 4a) | 🟢 done: real beats all 200 of every type (p = 0.005); every 35-brain result holds |
 | 6 | Same test in the Shiu spiking model | ⚪ planned |
-| 7 | Do shortcuts make behaviours leak into each other? | ⚪ planned |
+| 7 | Do shortcuts make behaviours leak into each other? | 🟢 done: inside-only shuffles mix senses slightly more (separation 0.985 → 0.983, p = 0.005, rule met); standard shuffles much more (→ 0.815) |
 
 Reasoning for each step and the literature gaps it fills: [LITERATURE_GAPS.md](LITERATURE_GAPS.md).
 
