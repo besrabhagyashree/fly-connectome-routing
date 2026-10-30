@@ -116,7 +116,8 @@ Arrows are labelled with what moves between steps. Box outlines show status.
 | 4 | Does the simulation agree with Stürner's structural map, and does the map survive randomisation? | 🟢 done: agrees (ρ 0.65); inside-only shuffles keep ~half the map, standard shuffles replace it (4a + 4b) |
 | 5 | Scale to 200 randomised brains per type (steps 1 and 4a) | 🟢 done: real beats all 200 of every type (p = 0.005); every 35-brain result holds |
 | 6 | Same test in the Shiu spiking model | 🟢 done: **no** (rule fixed before the run): the real brain's spread is 34.0 vs 20.7 / 21.7 inside-only, p = 1.0. Shuffled brains carry about half the activity, so this measure mixes focus with throughput; the sugar → feeding neuron response is lost (exploratory). See [notes](results/exp06_notes.md) |
-| 6b | Does matching activity reveal focus? | 🟢 done, exploratory: rule not met (real at 50 Hz: 260 firing, spread 21.2; target 177 not reached), so the calibrated test 6c was not run. See [notes](results/exp06b_notes.md) |
+| 6b | Does matching activity reveal focus? | 🟢 done, exploratory: rule not met (real at 50 Hz: 260 firing, spread 21.2; target 177 not reached). See [notes](results/exp06b_notes.md) |
+| 6c | Is the real brain more focused at equal activity? | 🟢 done, new experiment: **no answer**. None of 7 input rates landed on the target: activity jumps from 139 to 197 near 40 Hz. See [notes](results/exp06c_notes.md) |
 | 7 | Do shortcuts make behaviours leak into each other? | 🟢 done: inside-only shuffles mix senses slightly more (separation 0.985 → 0.983, p = 0.005, rule met); standard shuffles much more (→ 0.815) |
 
 Reasoning for each step and the literature gaps it fills: [LITERATURE_GAPS.md](LITERATURE_GAPS.md).

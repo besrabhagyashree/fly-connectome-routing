@@ -79,7 +79,7 @@ for(const [mode,c] of Object.entries(T)){
   fs.writeFileSync(`${OUT}/shuffles-${mode}.svg`,m);
 
   // Pipeline: swimlanes, labelled data flows, gate. Edit STATUS as steps progress.
-  const STATUS={data:'done',s1:'done',s2:'done',s3:'done',s4:'done',s5:'done',s6:'done',s6b:'done',s6c:'wait',s7:'done',out:'done'};
+  const STATUS={data:'done',s1:'done',s2:'done',s3:'done',s4:'done',s5:'done',s6:'done',s6b:'done',s6c:'done',s7:'done',out:'done'};
   const stc={done:mode==='light'?'#1f8a5c':'#3fcf98',run:c.amber,wait:c.muted};
   let p=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 550" ${F}><rect width="1250" height="550" fill="${c.bg}"/><defs>`;
   [['a',c.muted],['y',stc.done],['n',c.pink]].forEach(([k,f])=>{p+=`<marker id="p${k}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="${f}"/></marker>`});
@@ -136,7 +136,7 @@ for(const [mode,c] of Object.entries(T)){
        `<text x="0" y="-3" font-size="11" font-weight="700" fill="${c.fg}" text-anchor="middle">${a}</text>`+
        `<text x="0" y="11" font-size="11" font-weight="700" fill="${c.fg}" text-anchor="middle">${b}</text></g>`});
   N(1080,354,'6b Quick check','matched at 50 Hz',STATUS.s6b);
-  N(660,354,'6c Calibrated test','not run',STATUS.s6c);
+  N(660,354,'6c Calibrated test','result: no answer',STATUS.s6c);
   N(320,274,'Stürner DN table','1,316 DNs',STATUS.s3);
   N(510,274,'Behaviour labels','published only',STATUS.s3);
   N(700,274,'Simulation vs map','flow model',STATUS.s4);

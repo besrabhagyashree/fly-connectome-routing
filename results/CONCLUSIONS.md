@@ -28,7 +28,8 @@ So the inside wiring cannot be called unimportant. The small effect in the rate 
 | 6a | Is focus seen in the spiking model? | **No.** Real 34.0, inside-only 20.7 / 21.7 (p = 1.0), standard 1.7 | Confirmatory, spiking model |
 | 6a | Does activity survive shuffling? | Neurons firing: real 380, inside-only about 177, standard 122 | Exploratory |
 | 6a | Does the feeding readout survive? | MN9: real 75 Hz; 0 Hz in all 50 inside-only degree brains; 29 Hz in inside-only block brains; 0 Hz in standard | Exploratory |
-| 6b | Does matching activity reveal focus? | Rule not met, so step 6c was not run. The match reached 260 neurons, not the target of 177 | Exploratory |
+| 6b | Does matching activity reveal focus? | Rule not met. The match reached 260 neurons, not the target of 177 | Exploratory |
+| 6c | Is the real brain more focused at equal activity? | **No answer.** None of 7 input rates landed in the band: activity jumps from 139 to 197 near 40 Hz. Either side of the band, the real brain's spread (7.2, 14.2) is below every shuffled brain, but its descending neurons fire about 8–16× less | New experiment after 6b; outcome no answer, numbers exploratory |
 
 ## What can and cannot be claimed
 
@@ -40,9 +41,10 @@ So the inside wiring cannot be called unimportant. The small effect in the rate 
 **Suggested, not established:**
 - In the spiking model, the sugar-to-MN9 pathway depends on the specific inside wiring. This was not a planned test.
 - Shuffling the inside wiring reduces how much activity propagates in a fixed-parameter spiking network.
+- The real brain's sugar response has a sharp threshold near 40 Hz input, and its spread runs from about 4 to 34 with input. Step 6a's "less focused" result may reflect activity level more than routing.
 
 **Not established:**
-- Whether the real brain is more or less focused than shuffled brains at equal activity in the spiking model. Spread mixes focus with throughput there, and the planned checks did not separate them.
+- Whether the real brain is more or less focused than shuffled brains at equal activity in the spiking model. Spread mixes focus with throughput there, and the planned checks, including step 6c, did not separate them. The numbers near the target point towards more focus in the real brain, but with far less reaching the descending neurons.
 
 ## Limits
 
@@ -54,11 +56,11 @@ So the inside wiring cannot be called unimportant. The small effect in the rate 
 
 ## Open questions
 
-1. A calibrated spiking test with every brain brought to the same activity (step 6c, not run).
+1. Whole input-response curves for real and shuffled brains in the spiking model, compared across input levels. Step 6c tried a single point and could not land on it.
 2. A planned test of which inside pathway carries sugar to MN9.
 
 Either would be a new experiment, with its rule fixed first.
 
 ## Where the detail is
 
-Step notes are in `results/`: `exp01_notes.md`, `dn_labels_summary.md`, `exp04_notes.md`, `exp04b_notes.md`, `exp05_notes.md`, `exp06_notes.md`, `exp06b_notes.md`, `exp07_notes.md`.
+Step notes are in `results/`: `exp01_notes.md`, `dn_labels_summary.md`, `exp04_notes.md`, `exp04b_notes.md`, `exp05_notes.md`, `exp06_notes.md`, `exp06b_notes.md`, `exp06c_notes.md`, `exp07_notes.md`.
