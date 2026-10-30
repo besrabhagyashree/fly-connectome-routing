@@ -145,8 +145,8 @@ for(const [mode,c] of Object.entries(T)){
   N(700,274,'Simulation vs map','4 · sim + flow model',STATUS.s4);
   N(890,274,'Leakage','7 · cross-behaviour',STATUS.s7);
   N(660,434,'Number audit','recomputed results',STATUS.audit);
-  N(450,434,'8a Gain sweep','real brain, 6 gains',STATUS.s8a);
-  N(100,434,'8b Gain 1.0 test','yes, not comparable',STATUS.s8b);
+  N(450,434,'8a + 8c Gain tests','0.5% was an artefact',STATUS.s8a);
+  N(100,434,'8b Gain 1.0 test','not valid',STATUS.s8b);
   N(1080,514,'Conclusions','main question open',STATUS.out);
   [['done','done'],['run','in progress'],['wait','planned']].forEach(([k,l],i)=>{const x=130+i*150;
     p+=`<rect x="${x}" y="600" width="22" height="14" rx="3" fill="${c.bg}" stroke="${stc[k]}" stroke-width="${k==='run'?2.5:1.5}"${k==='wait'?' stroke-dasharray="4 3"':''}/>`+

@@ -38,3 +38,31 @@ Next test: `exp08_gain_sweep_plan.md`.
 All 120 step 6 brains and every 6b and 6c level recompute from the raw spike files. The step 6, 6b and 6c rules were applied as written, and their plans were committed before their runs. Statistics for steps 1, 4, 5 and 7 match their result files.
 
 Not rechecked by the audit: run-history details such as sleep windows, the 21-to-20 sugar neuron mapping, and step 7's exploratory table.
+
+# Second audit, 31 Oct 2026
+
+A second read-only audit checked the preprint draft. The calculated numbers held. These claims did not, and each has been corrected.
+
+## Main correction
+
+**The real brain's 0.5% focus advantage, and its 0.2% separation advantage, were scaling artefacts.** Each network is scaled by its own spectral radius, which is on average 5–7× larger in the real brain, so shuffled brains ran at a higher effective gain even at gain 0.001. Spread and separation tracked the inverse raw radius across brains (R² 0.998–0.9999). A planned test (`exp08c_plan.md`, `exp08c_notes.md`) ran the real brain at the shuffles' effective gain: 17.191 vs 17.194 (p = 0.27) and 17.163 vs 17.165 (p = 0.34). Separation showed no advantage either (p = 0.37, 0.42).
+
+The first audit's reading, that the result "may be largely built in" by locked edges, was incomplete: scaling is the main cause.
+
+## Other corrections
+
+| Where | Was | Now |
+|---|---|---|
+| MN9 | Silent "with every edge connection intact", showing a need for inside wiring | MN9 is a motor neuron, so its inputs were not locked: 97% of its input synapses were shuffled. It also tracks activity (1–6 Hz in the real brain near the shuffles' activity). A lead only |
+| Shortcuts | "Most of the gap came from shortcuts", as fact | Inferred, from one rebuilt brain at low gain (93.5% of activity on new direct pairs). Shuffling also removes 73% of the original pairs |
+| "Seven times" | Each sense | A ratio of means. Per sense it runs from 1.4× to 171× |
+| Step 6c | Whole-brain activity "matched" | Only bracketed: 139 and 197 are both outside the band |
+| Park | "Single-neuron scale" | A compressed network (512 groups), olfaction only |
+| Boundary | "All" sensory connections locked | The 7 input classes; 641 other sensory-class neurons were not locked |
+| Checks | A failed check stopped the run | Inside-only degree failures stop the run, step 6 skips the brain, and standard brains only record it. No failure occurred |
+
+Also disclosed now: 14.1% of neurons have no predicted transmitter and are treated as excitatory; the Shiu reproduction has an open discrepancy (driven neurons about 145 vs 199 Hz).
+
+## Unchanged
+
+All calculated numbers. The map result (step 4) is not related to the radius (R² 0.002). The spiking results are unaffected by this scaling.

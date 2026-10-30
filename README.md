@@ -20,7 +20,7 @@ The complete wiring diagram of the adult fruit fly brain is now used as a ready-
 
 This project asks a sharper version of that question for one function, **getting each sense to the right brain-to-body (descending) neurons**. We drive 7 sensory classes through a rate model of all 139,255 neurons and measure how widely each signal spreads over the 1,305 descending neurons, in the real brain and in matched randomised brains.
 
-> **Concluded 31 Oct 2026; preprint to come.** Read the [study conclusions](results/CONCLUSIONS.md) first. The main question stays open: no comparison has been made at a matched operating point.
+> **Concluded 31 Oct 2026; preprint to come.** Read the [study conclusions](results/CONCLUSIONS.md) first. **The rate-model results below are superseded:** the real brain's 0.5% advantage is a [scaling artefact](results/exp08c_notes.md). The sections below are kept as the record of what was run.
 
 > **Correction, 30 Oct 2026.** An audit found that the rate model's gain calibration never took effect: gain was 0.001, the search floor, in all 638 runs, so signals barely travelled past one step. The rate-model findings on this page may be largely built into that setting. Read the [study conclusions](results/CONCLUSIONS.md) and [what changed](results/CORRECTIONS.md) first. A [gain sweep, step 8a](results/exp08_notes.md) gave no answer, and the [test at gain 1.0](results/exp08b_notes.md) compared brains at different operating points, so the question stays open.
 
@@ -42,7 +42,7 @@ Standard randomisation spreads each sense **6–7× wider** than the real brain,
 
 When the 158,808 boundary connections are locked and only the 2.54M inside connections are randomised, **the focus almost entirely survives**: 17.19 (degree-preserving) and 17.17 (block-preserving) vs 17.10 in the real brain. The real brain is still more focused than all 70 inside-only brains (p = 1/36 for each type; separation z = 8.0 and 11.2), and than all 400 at 200 per type (step 5: p = 0.005 for each type), but the difference is about 0.5%, against a 6–7× gap under standard randomisation.
 
-So, **at this gain, how focused each sense is is set mostly at the brain's sensory and motor boundaries; the interior wiring adds a small but consistent sharpening.** Because gain was at its floor, this may be largely built in (see the correction above). The result is consistent with [Park 2026](https://arxiv.org/abs/2609.39248) at single-neuron scale and across 7 senses. The large z-scores reflect how little the inside-only brains vary, not a large effect.
+**Superseded:** the small advantage reported here came from spectral-radius scaling, not from wiring (step 8c). The result is consistent with [Park 2026](https://arxiv.org/abs/2609.39248) at single-neuron scale and across 7 senses. The large z-scores reflect how little the inside-only brains vary, not a large effect.
 
 ### Which neurons, not how many (step 4a)
 
@@ -124,6 +124,7 @@ Arrows are labelled with what moves between steps. Box outlines show status.
 | Audit | Do the numbers and claims hold? | 🟢 done: numbers recompute, but gain was never calibrated. See [corrections](results/CORRECTIONS.md) |
 | 8a | Real brain at 6 gains: where do signals spread? | 🟢 done: **no answer**, no gain met the bar (direct-target share 99.6% → 61%). See [notes](results/exp08_notes.md) |
 | 8b | Inside-only shuffles at gain 1.0 | 🟢 done, new experiment: rule met (30.2 vs 289 / 233, p = 0.02), but **not comparable**: shuffled brains saturate because the real brain's spectral radius is about 5–7× larger. See [notes](results/exp08b_notes.md) |
+| 8c | Does the advantage survive at the shuffles' effective gain? | 🟢 done: **no**, artefact: 17.191 vs 17.194 (p = 0.27), 17.163 vs 17.165 (p = 0.34). See [notes](results/exp08c_notes.md) |
 
 Reasoning for each step and the literature gaps it fills: [LITERATURE_GAPS.md](LITERATURE_GAPS.md).
 

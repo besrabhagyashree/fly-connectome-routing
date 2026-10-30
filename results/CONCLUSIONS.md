@@ -1,6 +1,6 @@
 # Study conclusions
 
-Bhagyashree Besra, 31 Oct 2026. Final conclusions of this round of the fruit fly connectome routing study, steps 1–8b, including the corrections from an audit ([what changed](CORRECTIONS.md)). Not peer-reviewed. A further test may follow; it would be added as a new experiment.
+Bhagyashree Besra, 31 Oct 2026. Final conclusions of this round of the fruit fly connectome routing study, including two audits ([what changed](CORRECTIONS.md)). Not peer-reviewed. A preprint draft exists; a further test may follow.
 
 ## Question
 
@@ -8,48 +8,47 @@ Does the exact wiring of the adult *Drosophila* brain decide where each sense re
 
 ## Answer
 
-**This study does not settle the question. It shows that the answer depends heavily on the null model and on the operating point, and it finds that the inside wiring matters for at least one specific function.**
+**This study does not show that exact wiring makes the brain more focused. Its main finding is that an apparent wiring effect can come from null model design and network scaling.**
 
-- In the rate model as run, the connections at the brain's edges set most of how focused each sense is, and the exact inside wiring adds about 0.5%. But gain sat at its lowest allowed value (0.001) in every run, so signals barely travelled past one step. Spread there is close to a one-hop statistic of the edge connections, which inside-only shuffles hold fixed by design. This result may be largely built in.
-- The inside wiring still shapes *which* neurons each sense reaches in that model, through the small multi-step part of the signal.
-- In the Shiu et al. 2024 spiking model, the focus result does not replicate. Shuffling the inside wiring cuts the neurons firing about in half (descending output falls by about a third) and can abolish the sugar-to-feeding response, even with every edge connection intact.
+- **The apparent advantage was an artefact.** The real brain looked 0.5% more focused than all 400 inside-only shuffles (p = 0.005). Run at the shuffles' effective gain, it lost that advantage (p = 0.27 and 0.34). Spectral-radius scaling caused it.
+- **Inside wiring does shape which neurons a sense reaches** in the rate model: agreement with Stürner's map is 0.65 real against 0.51 and 0.52, and the radius does not explain it.
+- **The spiking model does not show the real brain as more focused** at default input (34.0 vs 20.7 and 21.7). Shuffled brains fire about half as many neurons, so this result mixes focus with throughput.
+- **A comparison at matched activity has not been made.** That remains the main open question.
 
-So the inside wiring cannot be called unimportant. The disagreement may be a difference between a model with almost no recurrent activity and one with plenty.
-
-Attempts to compare brains at equal activity did not succeed. In the spiking model, the real brain skipped the target activity (step 6c). In the rate model, the same gain put shuffled brains at 82–93% active and the real brain at 33% (step 8b). A comparison at a matched operating point has not been made, and that is the study's main open question.
-
-**Main contribution:** a concrete demonstration that a study of wiring can reach opposite readings depending on how the null model is built, how activity is set, and whether calibration really took effect, with inside-only shuffles as a tested way to remove shortcuts.
+**Main contribution:** a demonstration that a statistically strong wiring effect (p = 0.005, all 400 brains) can be a normalisation artefact, with a tested way to detect it.
 
 ## Findings
 
 | Step | Question | Result | Standing |
 |---|---|---|---|
-| 1, 5 | Does focus survive inside-only shuffling? | Mostly, at gain 0.001. Spread: real 17.10, inside-only 17.19 / 17.17, standard 122. Real beats all 400 inside-only brains (p = 0.005), by about 0.5% | Rule fixed after the first 35 per type; confirmatory only for the 165 added. May be built in (see Answer) |
+| 1, 5 | Is the real brain more focused than inside-only shuffles? | Apparent advantage: 17.10 vs 17.19 / 17.17 (p = 0.005). Removed by step 8c | Rule fixed after the first 35 per type; artefact |
 | 2 | Where do shortcuts come from? | The real brain has 466 direct sense-to-descending pairs, and inside-only shuffles keep them. *New* direct pairs appear only in standard shuffles (1,693 pairs in the one brain counted) | Descriptive, one brain per type |
 | 3 | Which descending neurons does each sense reach? | 1,303 of 1,305 matched to Stürner's atlas; routing is uneven across senses | Exploratory |
 | 4, 5 | Does the simulation match the published map? | ρ = 0.65 real, 0.51 / 0.52 inside-only, 0.07 standard. No shuffled brain matches the real one (p = 0.005–0.006) | No prior rule found; descriptive, rate model |
 | 4b | Does the map itself survive shuffling? | Map vs real map: 0.57 inside-only, 0.09 standard (35 each; inside-only degree only). Standard shuffles replace the map | Reproduction bar (ρ ≥ 0.90) fixed first; the shuffled comparison is descriptive |
-| 7 | Do shortcuts make behaviours leak? | Separation: real 0.985, inside-only 0.983 / 0.984 (p = 0.005, about 0.2%), standard 0.815 | Rule fixed after separation was on disk at 35 brains; confirmatory only for the 165 added. Gain 0.001 |
+| 7 | Is separation higher in the real brain? | Apparent advantage: 0.985 vs 0.983 / 0.984 (p = 0.005). Removed by step 8c; standard 0.815 | Rule fixed after 35 brains per type; artefact |
 | 6a | Is focus seen in the spiking model? | **No.** Real 34.0, inside-only 20.7 / 21.7 (p = 1.0), standard 1.7 | Confirmatory, spiking model |
 | 6a | Does activity survive shuffling? | Neurons firing: real 380, inside-only about 177, standard 122 | Exploratory |
-| 6a | Does the feeding readout survive? | MN9: real 75 Hz; 0 Hz in all 50 inside-only degree brains; 29 Hz in inside-only block brains; 0 Hz in standard | Exploratory |
+| 6a | Does the feeding readout survive? | MN9: real 75 Hz; 0 Hz in all 50 inside-only degree brains; 29.5 Hz inside-only block; 0 Hz standard. Its inputs were shuffled, and it tracks activity | Exploratory lead |
 | 6b | Does matching activity reveal focus? | Rule not met. The match reached 260 neurons, not the target of 177 | Exploratory |
 | 6c | Is the real brain more focused at equal activity? | **No answer.** None of 7 input rates landed in the band: activity jumps from 139 to 197 near 40 Hz. Either side of the band, the real brain's spread (7.2, 14.2) is below every shuffled brain, but its descending neurons fire about 8–17× less | New experiment after 6b; outcome no answer, numbers exploratory |
 | 8a | At what gain do signals spread? | **No answer.** Direct-target share falls from 99.6% to 61% at gain 1.0, above the 50% bar | Real brain only; rule fixed first |
 | 8b | Is the real brain more focused at gain 1.0? | Rule met (spread 30.2 vs 289 / 233, p = 0.02), **but not comparable:** shuffled brains saturate (82–93% active vs 33%) because the real brain's spectral radius is about 5–7× larger | New experiment after 8a. Rule met, not evidence of focus |
+| 8c | Does the advantage survive at effective gain? | **No.** 17.191 vs 17.194 (p = 0.27); 17.163 vs 17.165 (p = 0.34); separation p = 0.37, 0.42 | Rule fixed first; prompted by a post hoc finding |
 
 ## What can and cannot be claimed
 
 **Supported:**
-- Degree-preserving null models that also move the sensory and descending connections add new shortcuts, and at this gain that alone produces most of the 17-vs-122 gap.
-- At gain 0.001, the real brain beats every inside-only brain, consistently but slightly.
-- In the rate model, inside-only shuffling changes which descending neurons a sense reaches, more for multi-layer senses such as smell than for touch.
+- The 0.5% focus and 0.2% separation advantages were artefacts of spectral-radius scaling.
+- Standard shuffles widen mean spread about sevenfold (ratio of means; 1.4× to 171× per sense).
+- In the rate model, inside-only shuffling changes which descending neurons a sense reaches, more for smell than for touch.
 
 **Suggested, not established:**
-- The real inside wiring gives the network a spectral radius about 5–7× larger than inside-only shuffles, with the boundary intact. Its cause has not been studied.
-- In the spiking model, the sugar-to-MN9 pathway depends on the specific inside wiring. This was not a planned test.
-- Shuffling the inside wiring reduces how much activity propagates in a fixed-parameter spiking network.
-- The real brain's sugar response has a sharp threshold near 40 Hz input, and its spread runs from about 4 to 34 with input. Step 6a's "less focused" result may reflect activity level more than routing.
+- New shortcuts drive the widening under standard shuffles. This rests on one rebuilt brain.
+- Real inside wiring gives a spectral radius about 5–7× larger than its shuffles. Its cause has not been established.
+- MN9 depends on inside wiring. Its own inputs were shuffled, so this is a lead only.
+- Shuffling inside wiring reduces how much activity propagates in a fixed-parameter spiking network.
+- Step 6a's result may reflect activity level more than routing.
 
 **Not established:**
 - Whether the rate-model result holds when signals actually spread through the network. No comparison has been made at a matched operating point.
@@ -60,7 +59,8 @@ Attempts to compare brains at equal activity did not succeed. In the spiking mod
 - Step 6 drove sugar neurons only; steps 1 and 5 used 7 sensory classes, step 4a scored 6 senses, and step 4b used 8 modalities.
 - Steps 1–5 used connections of ≥ 5 synapses (2.7M connections); step 6 used all connections (15.1M). Step 6 read out 1,301 descending neurons, not 1,305.
 - Both are simple models of a static wiring diagram, with no learning, modulation or body.
-- No model was tuned brain by brain. The rate model's gain search returned its floor in all 638 runs (activity about 12%, target 5%), and step 6 used fixed parameters.
+- No model was tuned brain by brain. The rate model's gain search returned its floor in every run (activity about 12%, target 5%), and step 6 used fixed parameters.
+- Step 8c used one mean effective gain per type; each shuffled brain has its own.
 - Every result rests on a single connectome.
 
 ## Open questions
@@ -73,4 +73,4 @@ Each would be a new experiment, with its rule fixed first.
 
 ## Where the detail is
 
-Step notes are in `results/`: `exp01_notes.md` (September preliminary run; step 1's inside-only results are in `exp05_notes.md`), `dn_labels_summary.md`, `exp04_notes.md`, `exp04b_notes.md`, `exp05_notes.md`, `exp06_notes.md`, `exp06b_notes.md`, `exp06c_notes.md`, `exp07_notes.md`, `exp08_notes.md` (8a), `exp08b_notes.md`.
+Step notes are in `results/`: `exp01_notes.md` (September preliminary run; step 1's inside-only results are in `exp05_notes.md`), `dn_labels_summary.md`, `exp04_notes.md`, `exp04b_notes.md`, `exp05_notes.md`, `exp06_notes.md`, `exp06b_notes.md`, `exp06c_notes.md`, `exp07_notes.md`, `exp08_notes.md` (8a), `exp08b_notes.md`, `exp08c_notes.md`.
