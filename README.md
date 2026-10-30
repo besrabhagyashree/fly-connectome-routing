@@ -20,6 +20,8 @@ The complete wiring diagram of the adult fruit fly brain is now used as a ready-
 
 This project asks a sharper version of that question for one function, **getting each sense to the right brain-to-body (descending) neurons**. We drive 7 sensory classes through a calibrated rate model of all 139,255 neurons and measure how widely each signal spreads over the 1,305 descending neurons, in the real brain and in matched randomised brains.
 
+> **Concluded 30 Oct 2026; preprint to come.** Read the [study conclusions](results/CONCLUSIONS.md) first.
+
 > **Preliminary.** The decisive control (inside-only randomisation, 35 + 35 brains) finished on 27 Oct 2026 and changes how the earlier result reads (see below). Nothing here is peer-reviewed. The spiking-model test (step 6, 30 Oct 2026) did not replicate the rate-model focus result, so the rate-model conclusions below hold for that calibrated model and should not be generalised without it.
 
 ## Key result so far
@@ -95,7 +97,7 @@ The step 4a conclusion now holds under two independent methods. Details: [result
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/pipeline-dark.svg">
-  <img alt="Pipeline in five lanes. FlyWire data feeds the inside-only shuffle, which feeds shortcut statistics and 70 rate-model runs. Their reach goes to a gate asking whether the real brain is more focused than the inside-only shuffles (p &lt; 0.05 for both types): yes leads to scaling to 200 shuffles, no means skip scaling. Separately, Stürner's table and the real run's descending neurons feed behaviour labels, then the map comparison and leakage analysis. The same rewiring code feeds the Shiu spiking model (6a), followed by a matched-activity check (6b) and, only if 6b says yes, a calibrated test (6c). Results flow into the preprint." src="assets/pipeline-light.svg" width="100%">
+  <img alt="Pipeline in five lanes. FlyWire data feeds the inside-only shuffle, which feeds shortcut statistics and 70 rate-model runs. Their reach goes to a gate asking whether the real brain is more focused than the inside-only shuffles (p &lt; 0.05 for both types): yes leads to scaling to 200 shuffles, no means skip scaling. Separately, Stürner's table and the real run's descending neurons feed behaviour labels, then the map comparison and leakage analysis. The same rewiring code feeds the Shiu spiking model (6a), followed by a matched-activity check (6b) and, only if 6b says yes, a calibrated test (6c). Results flow into the conclusions; the preprint comes later." src="assets/pipeline-light.svg" width="100%">
 </picture>
 
 Arrows are labelled with what moves between steps. Box outlines show status.
@@ -114,6 +116,7 @@ Arrows are labelled with what moves between steps. Box outlines show status.
 | 4 | Does the simulation agree with Stürner's structural map, and does the map survive randomisation? | 🟢 done: agrees (ρ 0.65); inside-only shuffles keep ~half the map, standard shuffles replace it (4a + 4b) |
 | 5 | Scale to 200 randomised brains per type (steps 1 and 4a) | 🟢 done: real beats all 200 of every type (p = 0.005); every 35-brain result holds |
 | 6 | Same test in the Shiu spiking model | 🟢 done: **no** (rule fixed before the run): the real brain's spread is 34.0 vs 20.7 / 21.7 inside-only, p = 1.0. Shuffled brains carry about half the activity, so this measure mixes focus with throughput; the sugar → feeding neuron response is lost (exploratory). See [notes](results/exp06_notes.md) |
+| 6b | Does matching activity reveal focus? | 🟢 done, exploratory: rule not met (real at 50 Hz: 260 firing, spread 21.2; target 177 not reached), so the calibrated test 6c was not run. See [notes](results/exp06b_notes.md) |
 | 7 | Do shortcuts make behaviours leak into each other? | 🟢 done: inside-only shuffles mix senses slightly more (separation 0.985 → 0.983, p = 0.005, rule met); standard shuffles much more (→ 0.815) |
 
 Reasoning for each step and the literature gaps it fills: [LITERATURE_GAPS.md](LITERATURE_GAPS.md).

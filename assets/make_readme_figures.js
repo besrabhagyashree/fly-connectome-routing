@@ -79,7 +79,7 @@ for(const [mode,c] of Object.entries(T)){
   fs.writeFileSync(`${OUT}/shuffles-${mode}.svg`,m);
 
   // Pipeline: swimlanes, labelled data flows, gate. Edit STATUS as steps progress.
-  const STATUS={data:'done',s1:'done',s2:'done',s3:'done',s4:'done',s5:'done',s6:'done',s6b:'run',s6c:'wait',s7:'done',out:'wait'};
+  const STATUS={data:'done',s1:'done',s2:'done',s3:'done',s4:'done',s5:'done',s6:'done',s6b:'done',s6c:'wait',s7:'done',out:'done'};
   const stc={done:mode==='light'?'#1f8a5c':'#3fcf98',run:c.amber,wait:c.muted};
   let p=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 550" ${F}><rect width="1250" height="550" fill="${c.bg}"/><defs>`;
   [['a',c.muted],['y',stc.done],['n',c.pink]].forEach(([k,f])=>{p+=`<marker id="p${k}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="${f}"/></marker>`});
@@ -96,14 +96,19 @@ for(const [mode,c] of Object.entries(T)){
   E('M660,220 H696','reach',678,213);
   E('M850,220 H886','yes',868,213,'y');
   // Gate rule (empirical permutation p, both inside-only types). The map comparison is not behind the gate.
-  E('M775,192 V170 H846','no',783,186,'n','start');
-  p+=`<text x="852" y="174" font-size="11" font-weight="700" fill="${c.pink}">skip scaling</text>`;
+  E('M775,192 V170 H1056','no',783,186,'n','start');
+  p+=`<path d="M660,140 H1060 V220" fill="none" stroke="${c.muted}" stroke-width="1.5"/><text x="860" y="134" font-size="11" fill="${c.muted}" text-anchor="middle">shortcut tables</text>`;
+  p+=`<text x="852" y="164" font-size="11" font-weight="700" fill="${c.pink}">skip scaling</text>`;
   p+=`<text x="775" y="262" font-size="10" fill="${c.muted}" text-anchor="middle">p &lt; 0.05 for both types</text>`;
-  E('M585,246 V270','~17 DNs per sense',593,264,'a','start');
+  E('M585,246 V270','~17 DNs per sense',577,262,'a','end');
   E('M470,300 H506','root_id',488,293);
   E('M660,300 H696','labels',678,293);
-  E('M850,300 H886','labels',868,293);
   E('M395,114 V100 H1155 V190','same inside-only rewire code',775,94);
+  E('M280,60 H1178 V190','15.1M edges, all synapses',700,54);
+  E('M640,246 V258 H706 V270','activity',682,254);
+  E('M845,274 V254 H955 V250','map score',900,266);
+  E('M1000,246 V270','brains',1008,262,'a','start');
+  E('M395,326 V335 H965 V330','DN clusters',560,349);
   E('M1040,220 H1060 V460 H1076');
   p+=`<path d="M1040,300 H1060" fill="none" stroke="${c.muted}" stroke-width="1.5"/>`;
   E('M1155,246 V268');
@@ -130,13 +135,13 @@ for(const [mode,c] of Object.entries(T)){
     p+=`<g transform="translate(${x},${y})"><polygon points="0,-28 75,0 0,28 -75,0" fill="${c.bg}" stroke="${c.amber}" stroke-width="2"/>`+
        `<text x="0" y="-3" font-size="11" font-weight="700" fill="${c.fg}" text-anchor="middle">${a}</text>`+
        `<text x="0" y="11" font-size="11" font-weight="700" fill="${c.fg}" text-anchor="middle">${b}</text></g>`});
-  N(1080,354,'6b Quick check','real at ~177 firing',STATUS.s6b);
-  N(660,354,'6c Calibrated test','every brain matched',STATUS.s6c);
-  N(320,274,'Stürner DN table','1,315 DNs',STATUS.s3);
+  N(1080,354,'6b Quick check','matched at 50 Hz',STATUS.s6b);
+  N(660,354,'6c Calibrated test','not run',STATUS.s6c);
+  N(320,274,'Stürner DN table','1,316 DNs',STATUS.s3);
   N(510,274,'Behaviour labels','published only',STATUS.s3);
   N(700,274,'Simulation vs map','flow model',STATUS.s4);
   N(890,274,'Leakage','cross-behaviour',STATUS.s7);
-  N(1080,434,'Preprint + code','public repo',STATUS.out);
+  N(1080,434,'Conclusions','preprint later',STATUS.out);
   [['done','done'],['run','in progress'],['wait','planned']].forEach(([k,l],i)=>{const x=130+i*150;
     p+=`<rect x="${x}" y="520" width="22" height="14" rx="3" fill="${c.bg}" stroke="${stc[k]}" stroke-width="${k==='run'?2.5:1.5}"${k==='wait'?' stroke-dasharray="4 3"':''}/>`+
        `<text x="${x+30}" y="531" font-size="12" fill="${c.muted}">${l}</text>`});
