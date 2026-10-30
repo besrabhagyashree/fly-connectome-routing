@@ -20,7 +20,7 @@ The complete wiring diagram of the adult fruit fly brain is now used as a ready-
 
 This project asks a sharper version of that question for one function, **getting each sense to the right brain-to-body (descending) neurons**. We drive 7 sensory classes through a rate model of all 139,255 neurons and measure how widely each signal spreads over the 1,305 descending neurons, in the real brain and in matched randomised brains.
 
-> **Correction, 30 Oct 2026.** An audit found that the rate model's gain calibration never took effect: gain was 0.001, the search floor, in all 638 runs, so signals barely travelled past one step. The rate-model findings on this page may be largely built into that setting. Read the [study conclusions](results/CONCLUSIONS.md) and [what changed](results/CORRECTIONS.md) first. A [gain sweep](results/exp08_notes.md) gave no answer: no tested gain met its pre-set bar, so shuffled brains remain untested above gain 0.001.
+> **Correction, 30 Oct 2026.** An audit found that the rate model's gain calibration never took effect: gain was 0.001, the search floor, in all 638 runs, so signals barely travelled past one step. The rate-model findings on this page may be largely built into that setting. Read the [study conclusions](results/CONCLUSIONS.md) and [what changed](results/CORRECTIONS.md) first. A [gain sweep, step 8a](results/exp08_notes.md) gave no answer: no tested gain met its pre-set bar, so shuffled brains remain untested above gain 0.001.
 
 > **Preliminary.** The decisive control (inside-only randomisation, 35 + 35 brains) finished on 27 Oct 2026 and changes how the earlier result reads (see below). Nothing here is peer-reviewed. The spiking-model test (step 6, 30 Oct 2026) did not replicate the rate-model focus result, so the rate-model conclusions below should not be generalised.
 
@@ -119,6 +119,9 @@ Arrows are labelled with what moves between steps. Box outlines show status.
 | 6b | Does matching activity reveal focus? | 🟢 done, exploratory: rule not met (real at 50 Hz: 260 firing, spread 21.2; target 177 not reached). See [notes](results/exp06b_notes.md) |
 | 6c | Is the real brain more focused at equal activity? | 🟢 done, new experiment: **no answer**. None of 7 input rates landed on the target: activity jumps from 139 to 197 near 40 Hz. See [notes](results/exp06c_notes.md) |
 | 7 | Do shortcuts make behaviours leak into each other? | 🟢 done: inside-only shuffles mix senses slightly more (separation 0.985 → 0.983, p = 0.005, rule met); standard shuffles much more (→ 0.815) |
+| Audit | Do the numbers and claims hold? | 🟢 done: numbers recompute, but gain was never calibrated. See [corrections](results/CORRECTIONS.md) |
+| 8a | Real brain at 6 gains: where do signals spread? | 🟢 done: **no answer**, no gain met the bar (direct-target share 99.6% → 61%). See [notes](results/exp08_notes.md) |
+| 8b | Inside-only shuffles at gain 1.0 | 🟡 running: a new experiment after 8a ([plan](results/exp08b_plan.md)). The shuffled and real brains are not at the same operating point |
 
 Reasoning for each step and the literature gaps it fills: [LITERATURE_GAPS.md](LITERATURE_GAPS.md).
 

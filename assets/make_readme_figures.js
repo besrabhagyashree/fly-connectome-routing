@@ -79,12 +79,12 @@ for(const [mode,c] of Object.entries(T)){
   fs.writeFileSync(`${OUT}/shuffles-${mode}.svg`,m);
 
   // Pipeline: swimlanes, labelled data flows, gate. Edit STATUS as steps progress.
-  const STATUS={data:'done',s1:'done',s2:'done',s3:'done',s4:'done',s5:'done',s6:'done',s6b:'done',s6c:'done',s7:'done',out:'done'};
+  const STATUS={data:'done',s1:'done',s2:'done',s3:'done',s4:'done',s5:'done',s6:'done',s6b:'done',s6c:'done',audit:'done',s8a:'done',s8b:'run',s7:'done',out:'run'};
   const stc={done:mode==='light'?'#1f8a5c':'#3fcf98',run:c.amber,wait:c.muted};
-  let p=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 550" ${F}><rect width="1250" height="550" fill="${c.bg}"/><defs>`;
+  let p=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 630" ${F}><rect width="1250" height="630" fill="${c.bg}"/><defs>`;
   [['a',c.muted],['y',stc.done],['n',c.pink]].forEach(([k,f])=>{p+=`<marker id="p${k}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="${f}"/></marker>`});
   p+=`</defs>`;
-  ['DATA','SHUFFLES','SIMULATION','VALIDATION','FOLLOW-UP','OUTPUT'].forEach((l,i)=>{const y=20+i*80;
+  ['DATA','SHUFFLES','SIMULATION','VALIDATION','FOLLOW-UP','RE-TEST','OUTPUT'].forEach((l,i)=>{const y=20+i*80;
     if(i%2===0)p+=`<rect x="0" y="${y}" width="1250" height="80" fill="${c.soft}"/>`;
     p+=`<text x="16" y="${y+44}" font-size="11" font-weight="700" letter-spacing="1" fill="${c.muted}">${l}</text>`});
   const E=(d,lab,lx,ly,kind='a',anchor='middle')=>{const sc=kind==='y'?stc.done:kind==='n'?c.pink:c.muted;
@@ -109,42 +109,48 @@ for(const [mode,c] of Object.entries(T)){
   E('M845,274 V254 H955 V250','map score',900,266);
   E('M1000,246 V270','brains',1008,262,'a','start');
   E('M395,326 V335 H965 V330','DN clusters',560,349);
-  E('M1040,220 H1060 V460 H1076');
+  E('M1040,220 H1060 V540 H1076');
   p+=`<path d="M1040,300 H1060" fill="none" stroke="${c.muted}" stroke-width="1.5"/>`;
   E('M1155,246 V268');
   E('M1155,328 V350','no',1163,343,'n','start');
-  E('M1230,300 H1242 V460 H1234','yes',1236,292,'y','end');
+  E('M1230,300 H1242 V540 H1234','yes',1236,292,'y','end');
   E('M1080,380 H1004');
-  E('M850,380 H814','yes',832,373,'y');
-  E('M925,408 V448 H1076','no',933,430,'n','start');
-  E('M735,406 V472 H1076');
+  E('M850,380 H814','no: reopened',818,402,'n','start');
+  E('M735,406 V430','found the gain flaw',743,424,'a','start');
+  E('M660,460 H604');
+  E('M450,460 H414');
+  E('M260,460 H254','no: reopened',262,500,'n');
+  E('M175,486 V552 H1076');
   const N=(x,y,t,sub,st)=>{const col=stc[st];
     p+=`<g transform="translate(${x},${y})"><rect width="150" height="52" rx="6" fill="${c.bg}" stroke="${col}" stroke-width="${st==='run'?2.5:1.5}"${st==='wait'?' stroke-dasharray="4 3"':''}/>`+
        `<circle cx="137" cy="12" r="5" fill="${col}"/><text x="12" y="23" font-size="13" font-weight="700" fill="${c.fg}">${t}</text>`+
        `<text x="12" y="40" font-size="11" fill="${c.muted}">${sub}</text></g>`};
   N(130,34,'FlyWire v783','139k neurons',STATUS.data);
-  N(320,114,'Inside-only shuffle','boundary locked',STATUS.s1);
-  N(510,114,'Shortcut stats','7 senses',STATUS.s2);
-  N(510,194,'Rate model runs','35 × 2 shuffles',STATUS.s1);
+  N(320,114,'Inside-only shuffle','1 · boundary locked',STATUS.s1);
+  N(510,114,'Shortcut stats','2 · 7 senses',STATUS.s2);
+  N(510,194,'Rate model runs','1 · 35 × 2 shuffles',STATUS.s1);
   p+=`<g transform="translate(775,220)"><polygon points="0,-28 75,0 0,28 -75,0" fill="${c.bg}" stroke="${stc.done}" stroke-width="2"/>`+
      `<text x="0" y="-3" font-size="11" font-weight="700" fill="${c.fg}" text-anchor="middle">Real more focused</text>`+
      `<text x="0" y="11" font-size="11" font-weight="700" fill="${c.fg}" text-anchor="middle">than shuffles?</text></g>`;
-  N(890,194,'Scale to 200','p floor 1/201',STATUS.s5);
+  N(890,194,'Scale to 200','5 · p floor 1/201',STATUS.s5);
   N(1080,194,'6a Shiu spiking','real + 119 shuffled',STATUS.s6);
-  [[1155,300,'Real more','focused?'],[925,380,'Real lower at','same activity?']].forEach(([x,y,a,b])=>{
+  [[1155,300,'Real more','focused?'],[925,380,'Real lower at','same activity?'],[335,460,'Direct share','under 50%?']].forEach(([x,y,a,b])=>{
     p+=`<g transform="translate(${x},${y})"><polygon points="0,-28 75,0 0,28 -75,0" fill="${c.bg}" stroke="${c.amber}" stroke-width="2"/>`+
        `<text x="0" y="-3" font-size="11" font-weight="700" fill="${c.fg}" text-anchor="middle">${a}</text>`+
        `<text x="0" y="11" font-size="11" font-weight="700" fill="${c.fg}" text-anchor="middle">${b}</text></g>`});
   N(1080,354,'6b Quick check','matched at 50 Hz',STATUS.s6b);
   N(660,354,'6c Calibrated test','result: no answer',STATUS.s6c);
   N(320,274,'Stürner DN table','1,316 DNs',STATUS.s3);
-  N(510,274,'Behaviour labels','published only',STATUS.s3);
-  N(700,274,'Simulation vs map','flow model',STATUS.s4);
-  N(890,274,'Leakage','cross-behaviour',STATUS.s7);
-  N(1080,434,'Conclusions','preprint later',STATUS.out);
+  N(510,274,'Behaviour labels','3 · published only',STATUS.s3);
+  N(700,274,'Simulation vs map','4 · sim + flow model',STATUS.s4);
+  N(890,274,'Leakage','7 · cross-behaviour',STATUS.s7);
+  N(660,434,'Number audit','recomputed results',STATUS.audit);
+  N(450,434,'8a Gain sweep','real brain, 6 gains',STATUS.s8a);
+  N(100,434,'8b Gain 1.0 test','119 shuffled brains',STATUS.s8b);
+  N(1080,514,'Conclusions','provisional',STATUS.out);
   [['done','done'],['run','in progress'],['wait','planned']].forEach(([k,l],i)=>{const x=130+i*150;
-    p+=`<rect x="${x}" y="520" width="22" height="14" rx="3" fill="${c.bg}" stroke="${stc[k]}" stroke-width="${k==='run'?2.5:1.5}"${k==='wait'?' stroke-dasharray="4 3"':''}/>`+
-       `<text x="${x+30}" y="531" font-size="12" fill="${c.muted}">${l}</text>`});
+    p+=`<rect x="${x}" y="600" width="22" height="14" rx="3" fill="${c.bg}" stroke="${stc[k]}" stroke-width="${k==='run'?2.5:1.5}"${k==='wait'?' stroke-dasharray="4 3"':''}/>`+
+       `<text x="${x+30}" y="611" font-size="12" fill="${c.muted}">${l}</text>`});
   p+=`</svg>`;
   fs.writeFileSync(`${OUT}/pipeline-${mode}.svg`,p);
 }

@@ -1,4 +1,4 @@
-# Step 8 — gain sweep, stage 1
+# Step 8a — gain sweep, real brain (the plan's stage 1)
 
 Run 30 Oct 2026 IST with `experiments/exp08_gain_sweep.py`, following `results/exp08_gain_sweep_plan.md` (approved and committed in 42ace78 before the run). Real brain only.
 
