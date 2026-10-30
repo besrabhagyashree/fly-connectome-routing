@@ -20,7 +20,7 @@ The complete wiring diagram of the adult fruit fly brain is now used as a ready-
 
 This project asks a sharper version of that question for one function, **getting each sense to the right brain-to-body (descending) neurons**. We drive 7 sensory classes through a calibrated rate model of all 139,255 neurons and measure how widely each signal spreads over the 1,305 descending neurons, in the real brain and in matched randomised brains.
 
-> **Preliminary.** The decisive control (inside-only randomisation, 35 + 35 brains) finished on 27 Oct 2026 and changes how the earlier result reads (see below). Nothing here is peer-reviewed.
+> **Preliminary.** The decisive control (inside-only randomisation, 35 + 35 brains) finished on 27 Oct 2026 and changes how the earlier result reads (see below). Nothing here is peer-reviewed. The spiking-model test (step 6, 30 Oct 2026) did not replicate the rate-model focus result, so the rate-model conclusions below hold for that calibrated model and should not be generalised without it.
 
 ## Key result so far
 
@@ -88,6 +88,7 @@ The step 4a conclusion now holds under two independent methods. Details: [result
 | **Stürner's map on randomised brains** (step 4b) | Flow model reproduces Stürner's ranks (ρ 0.91–0.97, 8/8 senses). Map vs real map: inside-only 0.57 · standard 0.09. Simulation vs own map: real 0.72 · inside-only 0.62 · standard 0.57 (35 each, p = 1/36) | [results/exp04b_notes.md](results/exp04b_notes.md) |
 | **Shortcut statistics** | Smell → descending direct share 0.012% real vs 3.2% after shuffling; touch is the exception (27.6% direct in the real brain) | [results/exp01_smoke_paths_C.csv](results/exp01_smoke_paths_C.csv) |
 | **Shiu et al. 2024 spiking model** | Reproduced: r = 0.99 over 386 neurons against published rates | [REPRODUCTIONS.md](REPRODUCTIONS.md) |
+| **Spiking-model test** (step 6) | Sugar → descending spread, 15.1M connections: real 34.0 · inside-only 20.7 / 21.7 (50 each) · standard 1.7 (19). Pre-registered rule **not met** (p = 1.0): the rate-model focus result does not replicate here. Exploratory: shuffled brains fire about half as many neurons, and MN9 (feeding) drops from 75 Hz to 0 / 29 Hz | [results/exp06_notes.md](results/exp06_notes.md) |
 | **Descending-neuron identities** | 1,303 / 1,305 matched to the Stürner et al. 2025 atlas; each sense lands on neurons the atlas also assigns to it | [results/dn_labels_summary.md](results/dn_labels_summary.md) |
 
 ## Pipeline
@@ -112,7 +113,7 @@ Arrows are labelled with what moves between steps. Box outlines show status.
 | 3 | Which known descending neurons does each sense reach? | 🟢 done, exploratory |
 | 4 | Does the simulation agree with Stürner's structural map, and does the map survive randomisation? | 🟢 done: agrees (ρ 0.65); inside-only shuffles keep ~half the map, standard shuffles replace it (4a + 4b) |
 | 5 | Scale to 200 randomised brains per type (steps 1 and 4a) | 🟢 done: real beats all 200 of every type (p = 0.005); every 35-brain result holds |
-| 6 | Same test in the Shiu spiking model | 🟡 running since 29 Oct: real + 50 + 50 + 19 shuffled brains in their model (15.1M connections each); rule fixed before the run ([plan](results/exp06_plan.md)); results once all 120 are in |
+| 6 | Same test in the Shiu spiking model | 🟢 done: **no** (rule fixed before the run): the real brain's spread is 34.0 vs 20.7 / 21.7 inside-only, p = 1.0. Shuffled brains carry about half the activity, so this measure mixes focus with throughput; the sugar → feeding neuron response is lost (exploratory). See [notes](results/exp06_notes.md) |
 | 7 | Do shortcuts make behaviours leak into each other? | 🟢 done: inside-only shuffles mix senses slightly more (separation 0.985 → 0.983, p = 0.005, rule met); standard shuffles much more (→ 0.815) |
 
 Reasoning for each step and the literature gaps it fills: [LITERATURE_GAPS.md](LITERATURE_GAPS.md).

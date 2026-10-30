@@ -27,6 +27,6 @@ results/exp04b_dn_layers_quick.csv
 
 *.egg-info/
 
-# step 6: per-brain rates + 108 MB surrogate files; CSVs committed when the run is complete
+# step 6: per-brain rates and per-driver CSVs (merged in exp06_all_brains.csv)
 results/exp06/
 results/exp06_shiu*.csv
