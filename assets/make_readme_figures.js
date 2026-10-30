@@ -122,7 +122,7 @@ for(const [mode,c] of Object.entries(T)){
      `<text x="0" y="-3" font-size="11" font-weight="700" fill="${c.fg}" text-anchor="middle">Real more focused</text>`+
      `<text x="0" y="11" font-size="11" font-weight="700" fill="${c.fg}" text-anchor="middle">than shuffles?</text></g>`;
   N(890,194,'Scale to 200','p floor 1/201',STATUS.s5);
-  N(1080,194,'6a Shiu spiking','rule not met',STATUS.s6);
+  N(1080,194,'6a Shiu spiking','result: no',STATUS.s6);
   N(1080,274,'6b Quick check','real at ~177 active?',STATUS.s6b);
   N(890,354,'6c Calibrated test','only if 6b says yes',STATUS.s6c);
   N(320,274,'Stürner DN table','1,315 DNs',STATUS.s3);
