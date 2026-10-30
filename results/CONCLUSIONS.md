@@ -1,6 +1,6 @@
 # Study conclusions
 
-Bhagyashree Besra, 30 Oct 2026, corrected the same day after an audit ([what changed](CORRECTIONS.md)). Not peer-reviewed. Covers steps 1–7 of the fruit fly connectome routing study. **The rate-model conclusions are provisional:** the gain sweep (`exp08_notes.md`) gave no answer, and the test at gain 1.0 (`exp08b_notes.md`) compared brains at different operating points.
+Bhagyashree Besra, 31 Oct 2026. Final conclusions of this round of the fruit fly connectome routing study, steps 1–8b, including the corrections from an audit ([what changed](CORRECTIONS.md)). Not peer-reviewed. A further test may follow; it would be added as a new experiment.
 
 ## Question
 
@@ -8,13 +8,17 @@ Does the exact wiring of the adult *Drosophila* brain decide where each sense re
 
 ## Answer
 
-**Not settled. The two models disagree, and the audit found a likely reason.**
+**This study does not settle the question. It shows that the answer depends heavily on the null model and on the operating point, and it finds that the inside wiring matters for at least one specific function.**
 
 - In the rate model as run, the connections at the brain's edges set most of how focused each sense is, and the exact inside wiring adds about 0.5%. But gain sat at its lowest allowed value (0.001) in every run, so signals barely travelled past one step. Spread there is close to a one-hop statistic of the edge connections, which inside-only shuffles hold fixed by design. This result may be largely built in.
 - The inside wiring still shapes *which* neurons each sense reaches in that model, through the small multi-step part of the signal.
 - In the Shiu et al. 2024 spiking model, the focus result does not replicate. Shuffling the inside wiring cuts the neurons firing about in half (descending output falls by about a third) and can abolish the sugar-to-feeding response, even with every edge connection intact.
 
 So the inside wiring cannot be called unimportant. The disagreement may be a difference between a model with almost no recurrent activity and one with plenty.
+
+Attempts to compare brains at equal activity did not succeed. In the spiking model, the real brain skipped the target activity (step 6c). In the rate model, the same gain put shuffled brains at 82–93% active and the real brain at 33% (step 8b). A comparison at a matched operating point has not been made, and that is the study's main open question.
+
+**Main contribution:** a concrete demonstration that a study of wiring can reach opposite readings depending on how the null model is built, how activity is set, and whether calibration really took effect, with inside-only shuffles as a tested way to remove shortcuts.
 
 ## Findings
 

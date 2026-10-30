@@ -79,7 +79,7 @@ for(const [mode,c] of Object.entries(T)){
   fs.writeFileSync(`${OUT}/shuffles-${mode}.svg`,m);
 
   // Pipeline: swimlanes, labelled data flows, gate. Edit STATUS as steps progress.
-  const STATUS={data:'done',s1:'done',s2:'done',s3:'done',s4:'done',s5:'done',s6:'done',s6b:'done',s6c:'done',audit:'done',s8a:'done',s8b:'done',s7:'done',out:'run'};
+  const STATUS={data:'done',s1:'done',s2:'done',s3:'done',s4:'done',s5:'done',s6:'done',s6b:'done',s6c:'done',audit:'done',s8a:'done',s8b:'done',s7:'done',out:'done'};
   const stc={done:mode==='light'?'#1f8a5c':'#3fcf98',run:c.amber,wait:c.muted};
   let p=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 630" ${F}><rect width="1250" height="630" fill="${c.bg}"/><defs>`;
   [['a',c.muted],['y',stc.done],['n',c.pink]].forEach(([k,f])=>{p+=`<marker id="p${k}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="${f}"/></marker>`});
@@ -147,7 +147,7 @@ for(const [mode,c] of Object.entries(T)){
   N(660,434,'Number audit','recomputed results',STATUS.audit);
   N(450,434,'8a Gain sweep','real brain, 6 gains',STATUS.s8a);
   N(100,434,'8b Gain 1.0 test','yes, not comparable',STATUS.s8b);
-  N(1080,514,'Conclusions','provisional',STATUS.out);
+  N(1080,514,'Conclusions','main question open',STATUS.out);
   [['done','done'],['run','in progress'],['wait','planned']].forEach(([k,l],i)=>{const x=130+i*150;
     p+=`<rect x="${x}" y="600" width="22" height="14" rx="3" fill="${c.bg}" stroke="${stc[k]}" stroke-width="${k==='run'?2.5:1.5}"${k==='wait'?' stroke-dasharray="4 3"':''}/>`+
        `<text x="${x+30}" y="611" font-size="12" fill="${c.muted}">${l}</text>`});
