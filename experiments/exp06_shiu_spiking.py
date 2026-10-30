@@ -5,7 +5,7 @@ For each brain: build the surrogate on THEIR v783 edge list (15.1M edges, sign
 from the presynaptic neuron = Dale's law), with the step 1 boundary (sensory
 channels + descending neurons, from our FlyWire annotation) frozen for the
 inside-only types; check invariants and boundary; write it in their format; run
-THEIR model (20 v783 sugar GRNs at 200 Hz, default params, 3 trials of 1 s);
+THEIR model (20 v783 sugar GRNs at their default 150 Hz, default params, 3 trials of 1 s);
 score the spread (participation ratio) of the descending rate profile.
 
 Resumable: brains whose rates file exists are scored, not re-simulated.

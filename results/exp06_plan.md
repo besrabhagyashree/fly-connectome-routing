@@ -15,7 +15,7 @@ Does the real brain's focus (signal reaching few descending neurons) also show u
 
 ## Run
 
-Sugar neurons are excited: their published list of 21 right-hemisphere labellar sugar GRNs, restricted to the 20 present in v783 (720575940620900446 has no v783 counterpart). They are excited at their default 200 Hz, with their default parameters, 1 s per trial. Each brain gets 3 trials and its rates are averaged; their own first 3 trials match their 30-trial mean (REPRODUCTIONS.md).
+Sugar neurons are excited: their published list of 21 right-hemisphere labellar sugar GRNs, restricted to the 20 present in v783 (720575940620900446 has no v783 counterpart). They are excited at their default rate, with their default parameters, 1 s per trial. Each brain gets 3 trials and its rates are averaged; their own first 3 trials match their 30-trial mean (REPRODUCTIONS.md).
 
 ## Measure
 
@@ -46,3 +46,7 @@ Scope limits fixed beforehand:
 - Degree (or block) invariants are preserved.
 - Inside-only brains leave every boundary edge untouched.
 - If either check fails, that brain is not simulated.
+
+## Correction, 30 Oct 2026
+
+This plan first said "their default 200 Hz". Their default (`r_poi` in `model.py`) is 150 Hz. The run used their unmodified default parameters, so all step 6 results are at 150 Hz, as the plan's "default parameters" intended; only the stated number was wrong. Found after the run while planning step 6b.

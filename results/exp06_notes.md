@@ -4,7 +4,7 @@ Run 29–30 Oct 2026 IST with `experiments/exp06_shiu_spiking.py`, following `re
 
 ## Main test (confirmatory): spread over descending neurons
 
-Sugar neurons driven at 200 Hz, 3 trials of 1 s per brain, Shiu's default parameters, their full v783 edge list (15.1M connections). Spread = participation ratio of the descending-neuron rate profile; lower = more focused. p = (1 + brains with spread ≤ real) / (N + 1).
+Sugar neurons driven at 150 Hz (their default `r_poi`; the plan first misstated this as 200 Hz, see its correction), 3 trials of 1 s per brain, Shiu's default parameters, their full v783 edge list (15.1M connections). Spread = participation ratio of the descending-neuron rate profile; lower = more focused. p = (1 + brains with spread ≤ real) / (N + 1).
 
 | Network | N | Spread, mean ± SD | Range | Brains ≤ real | p |
 |---|---|---|---|---|---|
