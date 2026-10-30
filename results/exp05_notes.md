@@ -18,7 +18,7 @@ Run 28 Oct 2026 16:46 IST → 29 Oct 2026 ~08:35 IST (PC asleep 01:12–08:09 IS
 | Inside-only, block | 200 | 17.165 ± 0.007 | 17.142 | 0 | 0.005 | 9.6 |
 | Standard | 200 | 122.0 ± 4.7 | 105.6 | 0 | 0.005 | 22.1 |
 
-**Pre-registered rule** (README, "Correction (28 Oct 2026)"): real more focused than both inside-only types at p < 0.05. **Met: p = 0.005 for both.** The real brain beats all 400 inside-only brains, but the margin is small: 0.4–0.6% of spread. Standard shuffles spread the signal ~7× wider.
+**Rule, fixed after step 1's first 35 brains but before the 165 added here** (README, "Correction (28 Oct 2026)"): real more focused than both inside-only types at p < 0.05. **Met: p = 0.005 for both.** The real brain beats all 400 inside-only brains, but the margin is small: 0.4–0.6% of spread. Standard shuffles spread the signal ~7× wider.
 
 ## Step 4a at 200 brains — simulation agrees with Stürner's map (rho_own, higher = better)
 

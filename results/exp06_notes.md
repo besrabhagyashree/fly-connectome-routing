@@ -21,7 +21,7 @@ Checks: degree and block invariants held in all 119 shuffled brains; inside-only
 
 These are context for the verdict, not a change to it.
 
-1. **The measure mixes focus with throughput here.** The rate model calibrated each brain's gain to the same 5% active fraction. Shiu's model runs at fixed published parameters, so shuffled brains also carry less activity (table below). A weaker signal reaching fewer neurons gives a lower spread without being better routed. The test as planned cannot separate the two, and the plan did not anticipate this.
+1. **The measure mixes focus with throughput here.** The rate model was meant to calibrate each brain's gain to a 5% active fraction, but the search returned its floor in every run (see `CORRECTIONS.md`). Shiu's model runs at fixed published parameters, so shuffled brains also carry less activity (table below). A weaker signal reaching fewer neurons gives a lower spread without being better routed. The test as planned cannot separate the two, and the plan did not anticipate this.
 2. **One sense, not seven.** This test drives sugar neurons only; steps 1 and 5 averaged 7 sensory classes. The two spreads (34 vs 17) are not directly comparable.
 3. **Different graph.** Shiu's edge list keeps every synapse count; steps 1–5 used connections with ≥ 5 synapses.
 4. **The real brain is one estimate from 3 trials,** as are the shuffled brains. The real value is 34.0; the nearest shuffles reach 31.5 and 33.3.
@@ -39,13 +39,13 @@ These measures were recorded for every brain, but they were read as the run went
 
 - **Throughput falls.** No shuffled brain reaches the real brain's whole-brain activity (highest 233 vs 380). Inside-only shuffles fire about half as many neurons, though the sensory input and all boundary connections are unchanged.
 - **The feeding pathway depends on inside wiring.** MN9 is the motor neuron Shiu et al. use as the readout of sugar-evoked feeding. It fires at 75 Hz in the real brain, is silent in all 50 inside-only degree brains, and fires at less than half the real rate in inside-only block brains. Keeping each neuron's connections within its super-class keeps part of the pathway; keeping only degrees does not.
-- **Standard shuffles nearly silence the output.** About 2.5 descending neurons fire, and none in one brain. In the rate model these shuffles spread the signal about 7× wider instead. A likely reason, not tested here: activity spread thinly over many shortcuts stays below spiking threshold.
+- **Standard shuffles nearly silence the output.** About 2.5 descending neurons fire, and none in two brains. In the rate model these shuffles spread the signal about 7× wider instead. A likely reason, not tested here: activity spread thinly over many shortcuts stays below spiking threshold.
 
 ## Reading
 
-Across the two models the same shuffles have different effects. In the calibrated rate model the boundary sets most of the focus and the inside wiring adds about 0.5%. In the fixed-parameter spiking model, shuffling the inside wiring roughly halves what gets through and removes the sugar → MN9 response, even with the boundary intact. So the conclusion from steps 1 and 5, that the inside wiring matters little for routing, depends on the model and on gain calibration. It should not be stated without that qualifier.
+Across the two models the same shuffles have different effects. In the rate model as run (gain 0.001, almost no recurrence) the boundary sets most of the focus and the inside wiring adds about 0.5%. In the fixed-parameter spiking model, shuffling the inside wiring roughly halves the neurons firing, cuts descending output by about a third, and removes the sugar → MN9 response, even with the boundary intact. So the conclusion from steps 1 and 5, that the inside wiring matters little for routing, depends on the model and may reflect its very low gain. It should not be stated without that qualifier.
 
-What this step does not show is that the real brain is less focused than shuffled brains in any useful sense, because of point 1 above. A cleaner comparison would equalise throughput across brains first (for example calibrating input rate per brain, as the rate model calibrated gain). That is a new experiment and would need its own rule fixed in advance.
+What this step does not show is that the real brain is less focused than shuffled brains in any useful sense, because of point 1 above. A cleaner comparison would equalise throughput across brains first (for example calibrating input rate per brain). That is a new experiment and would need its own rule fixed in advance.
 
 ## Run record
 

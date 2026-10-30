@@ -1,6 +1,6 @@
 # Step 6b — the real brain at lower input (exploratory)
 
-Run 30 Oct 2026 IST, 21:04 to about 21:35, with `experiments/exp06b_matched_activity.py`, following `results/exp06b_plan.md` (committed in 3eff44c before the run). Exploratory: the shuffled-brain numbers were already known.
+Run 30 Oct 2026 IST, 21:04 to 21:19, with `experiments/exp06b_matched_activity.py`, following `results/exp06b_plan.md` (committed in 3eff44c before the run). Exploratory: the shuffled-brain numbers were already known.
 
 ## Results
 
@@ -17,7 +17,7 @@ Real v783 brain, 20 sugar neurons, 3 trials per rate.
 
 ## Decision
 
-**Rule: run step 6c if the real brain's spread at the matched rate is lower than both inside-only means. Not met.** The matched rate is 50 Hz, the closest to the 177 target. Its spread of 21.18 is below the block mean (21.73) but not the degree mean (20.66). **Step 6c is not run, and the study concludes on step 6.**
+**Rule: run step 6c if the real brain's spread at the matched rate is lower than both inside-only means. Not met.** The matched rate is 50 Hz, the closest to the 177 target. Its spread of 21.18 is below the block mean (21.73) but not the degree mean (20.66). **Under this rule step 6c is not run.** (6c was later reopened as a new experiment: see `exp06c_notes.md`.)
 
 ## Limits of this answer
 
@@ -28,7 +28,7 @@ Real v783 brain, 20 sugar neurons, 3 trials per rate.
 
 ## Reading
 
-Lowering the input does not make the real brain more focused than the shuffles in any clear way. It also does not settle the throughput question from step 6a: the real brain was never brought down to the shuffles' activity. A cleaner test (step 6c, calibrating every brain) remains possible, but the rule set before this run says not to run it here. Reopening it would be a new experiment with its own rule.
+Lowering the input does not make the real brain more focused than the shuffles in any clear way. It also does not settle the throughput question from step 6a: the real brain was never brought down to the shuffles' activity. A cleaner test remained possible, but the rule set before this run said not to run it here. It was reopened as a new experiment with its own rule (`exp06c_plan.md`).
 
 ## Files
 

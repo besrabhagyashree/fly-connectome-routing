@@ -50,3 +50,7 @@ Scope limits fixed beforehand:
 ## Correction, 30 Oct 2026
 
 This plan first said "their default 200 Hz". Their default (`r_poi` in `model.py`) is 150 Hz. The run used their unmodified default parameters, so all step 6 results are at 150 Hz, as the plan's "default parameters" intended; only the stated number was wrong. Found after the run while planning step 6b.
+
+## Correction, 30 Oct 2026 (audit)
+
+The N above says "fixed ~11:00 IST". It was committed at 10:42:43 (e027887), before the first simulation at about 10:43. The order is right; the stated time was wrong.

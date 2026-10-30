@@ -18,11 +18,11 @@
 
 The complete wiring diagram of the adult fruit fly brain is now used as a ready-made network for simulations, embodied models and AI demos. A claim that *the real wiring* does something needs a fair baseline: randomised brains with the same number of connections per neuron.
 
-This project asks a sharper version of that question for one function, **getting each sense to the right brain-to-body (descending) neurons**. We drive 7 sensory classes through a calibrated rate model of all 139,255 neurons and measure how widely each signal spreads over the 1,305 descending neurons, in the real brain and in matched randomised brains.
+This project asks a sharper version of that question for one function, **getting each sense to the right brain-to-body (descending) neurons**. We drive 7 sensory classes through a rate model of all 139,255 neurons and measure how widely each signal spreads over the 1,305 descending neurons, in the real brain and in matched randomised brains.
 
-> **Concluded 30 Oct 2026; preprint to come.** Read the [study conclusions](results/CONCLUSIONS.md) first.
+> **Correction, 30 Oct 2026.** An audit found that the rate model's gain calibration never took effect: gain was 0.001, the search floor, in all 638 runs, so signals barely travelled past one step. The rate-model findings on this page may be largely built into that setting. Read the [study conclusions](results/CONCLUSIONS.md) and [what changed](results/CORRECTIONS.md) first. A rerun at higher gains is [planned](results/exp08_gain_sweep_plan.md).
 
-> **Preliminary.** The decisive control (inside-only randomisation, 35 + 35 brains) finished on 27 Oct 2026 and changes how the earlier result reads (see below). Nothing here is peer-reviewed. The spiking-model test (step 6, 30 Oct 2026) did not replicate the rate-model focus result, so the rate-model conclusions below hold for that calibrated model and should not be generalised without it.
+> **Preliminary.** The decisive control (inside-only randomisation, 35 + 35 brains) finished on 27 Oct 2026 and changes how the earlier result reads (see below). Nothing here is peer-reviewed. The spiking-model test (step 6, 30 Oct 2026) did not replicate the rate-model focus result, so the rate-model conclusions below should not be generalised.
 
 ## Key result so far
 
@@ -31,7 +31,7 @@ This project asks a sharper version of that question for one function, **getting
   <img alt="Strip plot: the real brain spreads each sense over 17.1 effective descending neurons; 35 standard degree-preserving shuffles average 122 and 35 block-preserving shuffles average 101; 35 + 35 inside-only shuffles average 17.19 and 17.17, all slightly above the real brain." src="assets/results-light.svg" width="100%">
 </picture>
 
-Standard randomisation spreads each sense **6–7× wider** than the real brain, while overall activity stays identical (dimensionality ≈ 2,428, 1.74% of neurons active in every brain). But standard randomisation also moves the connections at the brain's edges, and that creates shortcuts:
+Standard randomisation spreads each sense **6–7× wider** than the real brain, while the driven input is the same in every brain (dimensionality ≈ 2,428 and 1.74% active describe the driven neurons, not the network's state; see the correction above). But standard randomisation also moves the connections at the brain's edges, and that creates shortcuts:
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/shuffles-dark.svg">
@@ -40,7 +40,7 @@ Standard randomisation spreads each sense **6–7× wider** than the real brain,
 
 When the 158,808 boundary connections are locked and only the 2.54M inside connections are randomised, **the focus almost entirely survives**: 17.19 (degree-preserving) and 17.17 (block-preserving) vs 17.10 in the real brain. The real brain is still more focused than all 70 inside-only brains (p = 1/36 for each type; separation z = 8.0 and 11.2), and than all 400 at 200 per type (step 5: p = 0.005 for each type), but the difference is about 0.5%, against a 6–7× gap under standard randomisation.
 
-So **how focused each sense is is set mostly at the brain's sensory and motor boundaries; the interior wiring adds a small but consistent sharpening.** This independently supports [Park 2026](https://arxiv.org/abs/2609.39248) at single-neuron scale and across 7 senses. The large z-scores reflect how little the inside-only brains vary, not a large effect.
+So, **at this gain, how focused each sense is is set mostly at the brain's sensory and motor boundaries; the interior wiring adds a small but consistent sharpening.** Because gain was at its floor, this may be largely built in (see the correction above). The result is consistent with [Park 2026](https://arxiv.org/abs/2609.39248) at single-neuron scale and across 7 senses. The large z-scores reflect how little the inside-only brains vary, not a large effect.
 
 ### Which neurons, not how many (step 4a)
 
@@ -97,7 +97,7 @@ The step 4a conclusion now holds under two independent methods. Details: [result
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/pipeline-dark.svg">
-  <img alt="Pipeline in five lanes. FlyWire data feeds the inside-only shuffle, which feeds shortcut statistics and 70 rate-model runs. Their reach goes to a gate asking whether the real brain is more focused than the inside-only shuffles (p &lt; 0.05 for both types): yes leads to scaling to 200 shuffles, no means skip scaling. Separately, Stürner's table and the real run's descending neurons feed behaviour labels, then the map comparison and leakage analysis. The same rewiring code feeds the Shiu spiking model (6a), followed by a matched-activity check (6b) and, only if 6b says yes, a calibrated test (6c). Results flow into the conclusions; the preprint comes later." src="assets/pipeline-light.svg" width="100%">
+  <img alt="Pipeline in five lanes. FlyWire data feeds the inside-only shuffle, which feeds shortcut statistics and 70 rate-model runs. Their reach goes to a gate asking whether the real brain is more focused than the inside-only shuffles (p &lt; 0.05 for both types): yes leads to scaling to 200 shuffles, no means skip scaling. Separately, Stürner's table and the real run's descending neurons feed behaviour labels, then the map comparison and leakage analysis. The same rewiring code feeds the Shiu spiking model (6a), followed by a matched-activity check (6b) and an equal-activity test (6c), which 6b's rule said to skip and which was reopened as a new experiment. Results flow into the conclusions; the preprint comes later." src="assets/pipeline-light.svg" width="100%">
 </picture>
 
 Arrows are labelled with what moves between steps. Box outlines show status.
@@ -125,7 +125,7 @@ Reasoning for each step and the literature gaps it fills: [LITERATURE_GAPS.md](L
 ## Methods in brief
 
 - **Connectome:** FlyWire v783, connections with ≥ 5 synapses, each signed by the presynaptic neuron's predicted neurotransmitter (Eckstein et al. 2024).
-- **Dynamics:** frozen leaky-tanh rate operator with no fitted single-neuron parameters. Gain is calibrated so every brain runs at the same operating point.
+- **Dynamics:** frozen leaky-tanh rate operator with no fitted single-neuron parameters. A gain search was meant to set every brain to the same operating point, but it returned its floor (0.001) in all 638 runs.
 - **Randomised brains:** directed Maslov–Sneppen edge swaps keeping in- and out-degree, weights and Dale's law. Variants: block-preserving (swaps within cell classes) and inside-only (sensory-out and descending-in edges locked, as in Park 2026). Every surrogate is checked against its invariants and the run aborts on any violation.
 - **Measures:** participation ratio over descending neurons (spread), channel separation, dimensionality, active fraction, direct-share and hop statistics.
 - **Statistics:** empirical p = (1 + surrogates at least as extreme) / (N + 1); z-scores against the surrogate distribution.

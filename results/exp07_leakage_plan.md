@@ -22,3 +22,7 @@ Do randomised brains let one sense's signal spill onto descending neurons (DNs) 
 ## Data source
 
 Saved DN activity profiles: `results/exp04_profiles/<network>_<replicate>.npz` (steps 4a and 5) and the Exp01/Exp05 result tables. No new simulation is needed for the main test.
+
+## Correction, 30 Oct 2026 (audit)
+
+The header says this was fixed "before any leakage number was computed". That is not accurate for the main test: separation at 35 brains was already on disk from step 1 (0.98283 / 0.98349 vs real 0.98519, p = 1/36). The rule was fixed before the 165 added brains, and before the exploratory off-target share was computed. All of this ran at gain 0.001.

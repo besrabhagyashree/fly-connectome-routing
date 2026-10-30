@@ -20,3 +20,9 @@ Same model, parameters and 20 sugar neurons as step 6, real v783 brain, 3 trials
 Run step 6c if the real brain's spread at the matched rate is **lower than the mean spread of both inside-only types** (20.66 and 21.73). Otherwise skip step 6c: matching activity does not bring back focus, and the study concludes on step 6.
 
 The rate-by-rate table is reported either way.
+
+## Correction, 30 Oct 2026 (audit)
+
+The header says "~21:10 IST". This plan was committed at 21:04:01 (3eff44c), before the first simulation at about 21:04:18. The order is right; the stated time was wrong.
+
+This plan's single exit, "skip step 6c, the study concludes", was later overridden by a new experiment: see `exp06c_plan.md`.

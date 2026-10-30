@@ -1,6 +1,6 @@
 # Step 6c — the real brain at equal activity
 
-Run 30 Oct 2026 IST, 21:26 to about 22:00, with `experiments/exp06c_equal_activity.py`, following `results/exp06c_plan.md` (committed in d4f97b7 before the run). This was a new experiment, decided after step 6b said not to run the original 6c.
+Run 30 Oct 2026 IST, 21:26 to 21:54, with `experiments/exp06c_equal_activity.py`, following `results/exp06c_plan.md` (committed in d4f97b7 before the run). This was a new experiment, decided after step 6b said not to run the original 6c.
 
 ## Results
 
@@ -25,9 +25,9 @@ Real v783 brain, 20 sugar neurons, 3 trials per rate. Target band: 159–195 neu
 
 These are not a verdict, because no rate met the rule.
 
-- **Sharp threshold.** Activity rises slowly to 38.75 Hz, then jumps from 139 to 197 by 40 Hz, and on to 260 at 50 Hz and 357 at 75 Hz. The band falls inside that jump, which is why the search missed it.
+- **Sharp threshold.** Activity climbs from 63 at 30 Hz to 139 at 38.75 Hz, then jumps to 197 by 40 Hz, and on to 260 at 50 Hz and 357 at 75 Hz. The band falls inside that jump, which is why the search missed it.
 - **The real brain's spread is lower on both sides of the target.** At 139 and 197 neurons firing, its spread (7.2 and 14.2) is below every shuffled brain in the band (lowest 16.5). That is the opposite of step 6a. It suggests that the "real is less focused" result in 6a came from activity level, not from routing.
-- **That reading has its own limit.** The match is on whole-brain neurons firing only. At these inputs the real brain's descending neurons fire about 8 to 16 times less than the shuffles' (0.04–0.09 Hz vs 0.73 Hz), and MN9 almost stops. So activity matched across the brain is not matched at the output. A brain sitting just above threshold will show a small spread partly because little reaches the output at all.
+- **That reading has its own limit.** The match is on whole-brain neurons firing only. At these inputs the real brain's descending neurons fire about 8 to 17 times less than the shuffles' (0.04–0.09 Hz vs 0.73 Hz), and MN9 almost stops. So activity matched across the brain is not matched at the output. A brain sitting just above threshold will show a small spread partly because little reaches the output at all.
 - **Spread is unstable near threshold.** It moves from 8.3 to 7.2 to 14.2 across three neighbouring rates. With a change this steep, spread alone is a weak measure here.
 
 ## Reading
