@@ -139,7 +139,7 @@ def claim(name):
         return False
 
 
-def run(n_proc, shard="0/1", worker=None, min_free_gb=1.5):
+def run(n_proc, shard="0/1", worker=None, min_free_gb=1.5, reverse=False):
     """shard i/k: fixed every-k-th split. worker w: take the next unclaimed brain (any number of drivers)."""
     i, k = map(int, shard.split("/"))
     tag = f"w{worker}" if worker is not None else (f"s{i}" if k > 1 else "")
@@ -159,7 +159,8 @@ def run(n_proc, shard="0/1", worker=None, min_free_gb=1.5):
     done = load_all()
     seen = set(zip(done["network"], done["replicate"].astype(int)))
 
-    for j, (gen, r) in enumerate(schedule()):
+    jobs = list(enumerate(schedule()))
+    for j, (gen, r) in (jobs[::-1] if reverse else jobs):  # reverse: a helper works from the end
         name = f"{gen}_{r}"
         if worker is None and j % k != i:
             continue
@@ -238,7 +239,8 @@ if __name__ == "__main__":
     ap.add_argument("--n-proc", type=int, default=3)
     ap.add_argument("--shard", default="0/1", help="i/k: this driver runs every k-th brain, starting at i")
     ap.add_argument("--worker", type=int, help="claim-queue mode: run as driver number W")
+    ap.add_argument("--reverse", action="store_true", help="claim mode: take brains from the end of the schedule")
     ap.add_argument("--min-free-gb", type=float, default=1.5,
                     help="wait for this much free RAM before each simulation (this PC idles at 2-2.5 GB free)")
     a = ap.parse_args()
-    run(a.n_proc, a.shard, a.worker, a.min_free_gb) if a.stage == "run" else summary()
+    run(a.n_proc, a.shard, a.worker, a.min_free_gb, a.reverse) if a.stage == "run" else summary()
