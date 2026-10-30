@@ -1,6 +1,6 @@
 # Study conclusions
 
-Bhagyashree Besra, 30 Oct 2026, corrected the same day after an audit ([what changed](CORRECTIONS.md)). Not peer-reviewed. Covers steps 1–7 of the fruit fly connectome routing study. **The rate-model conclusions are provisional:** the gain sweep (`exp08_notes.md`) gave no answer, so inside-only shuffles remain untested above gain 0.001.
+Bhagyashree Besra, 30 Oct 2026, corrected the same day after an audit ([what changed](CORRECTIONS.md)). Not peer-reviewed. Covers steps 1–7 of the fruit fly connectome routing study. **The rate-model conclusions are provisional:** the gain sweep (`exp08_notes.md`) gave no answer, and the test at gain 1.0 (`exp08b_notes.md`) compared brains at different operating points.
 
 ## Question
 
@@ -31,6 +31,8 @@ So the inside wiring cannot be called unimportant. The disagreement may be a dif
 | 6a | Does the feeding readout survive? | MN9: real 75 Hz; 0 Hz in all 50 inside-only degree brains; 29 Hz in inside-only block brains; 0 Hz in standard | Exploratory |
 | 6b | Does matching activity reveal focus? | Rule not met. The match reached 260 neurons, not the target of 177 | Exploratory |
 | 6c | Is the real brain more focused at equal activity? | **No answer.** None of 7 input rates landed in the band: activity jumps from 139 to 197 near 40 Hz. Either side of the band, the real brain's spread (7.2, 14.2) is below every shuffled brain, but its descending neurons fire about 8–17× less | New experiment after 6b; outcome no answer, numbers exploratory |
+| 8a | At what gain do signals spread? | **No answer.** Direct-target share falls from 99.6% to 61% at gain 1.0, above the 50% bar | Real brain only; rule fixed first |
+| 8b | Is the real brain more focused at gain 1.0? | Rule met (spread 30.2 vs 289 / 233, p = 0.02), **but not comparable:** shuffled brains saturate (82–93% active vs 33%) because the real brain's spectral radius is about 5–7× larger | New experiment after 8a. Rule met, not evidence of focus |
 
 ## What can and cannot be claimed
 
@@ -40,12 +42,13 @@ So the inside wiring cannot be called unimportant. The disagreement may be a dif
 - In the rate model, inside-only shuffling changes which descending neurons a sense reaches, more for multi-layer senses such as smell than for touch.
 
 **Suggested, not established:**
+- The real inside wiring gives the network a spectral radius about 5–7× larger than inside-only shuffles, with the boundary intact. Its cause has not been studied.
 - In the spiking model, the sugar-to-MN9 pathway depends on the specific inside wiring. This was not a planned test.
 - Shuffling the inside wiring reduces how much activity propagates in a fixed-parameter spiking network.
 - The real brain's sugar response has a sharp threshold near 40 Hz input, and its spread runs from about 4 to 34 with input. Step 6a's "less focused" result may reflect activity level more than routing.
 
 **Not established:**
-- Whether the rate-model result holds when signals actually spread through the network. Every run so far used gain 0.001.
+- Whether the rate-model result holds when signals actually spread through the network. No comparison has been made at a matched operating point.
 - Whether the real brain is more or less focused than shuffled brains at equal activity in the spiking model. Spread mixes focus with throughput there, and the planned checks, including step 6c, did not separate them. The numbers near the target point towards more focus in the real brain, but with far less reaching the descending neurons.
 
 ## Limits
@@ -58,7 +61,7 @@ So the inside wiring cannot be called unimportant. The disagreement may be a dif
 
 ## Open questions
 
-1. Does the rate-model result hold at gains where signals spread? Step 8 gave no answer: at the highest gain tested (1.0), 61% of descending activity is still on direct targets, above the plan's 50% limit, so no shuffled brain was run.
+1. Does the rate-model result hold at gains where signals spread? Step 8a gave no answer, and 8b's yes is not comparable. The fair test matches each shuffled brain to the real brain's activity.
 2. Whole input-response curves for real and shuffled brains in the spiking model, compared across input levels. Step 6c tried a single point and could not land on it.
 3. A planned test of which inside pathway carries sugar to MN9.
 
@@ -66,4 +69,4 @@ Each would be a new experiment, with its rule fixed first.
 
 ## Where the detail is
 
-Step notes are in `results/`: `exp01_notes.md` (September preliminary run; step 1's inside-only results are in `exp05_notes.md`), `dn_labels_summary.md`, `exp04_notes.md`, `exp04b_notes.md`, `exp05_notes.md`, `exp06_notes.md`, `exp06b_notes.md`, `exp06c_notes.md`, `exp07_notes.md`, `exp08_notes.md`.
+Step notes are in `results/`: `exp01_notes.md` (September preliminary run; step 1's inside-only results are in `exp05_notes.md`), `dn_labels_summary.md`, `exp04_notes.md`, `exp04b_notes.md`, `exp05_notes.md`, `exp06_notes.md`, `exp06b_notes.md`, `exp06c_notes.md`, `exp07_notes.md`, `exp08_notes.md` (8a), `exp08b_notes.md`.
