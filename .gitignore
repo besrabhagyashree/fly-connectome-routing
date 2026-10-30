@@ -33,3 +33,6 @@ results/exp06_shiu*.csv
 
 # step 6b per-rate spike files
 results/exp06b/
+
+# step 6c per-rate spike files
+results/exp06c/
