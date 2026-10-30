@@ -95,7 +95,7 @@ The step 4a conclusion now holds under two independent methods. Details: [result
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/pipeline-dark.svg">
-  <img alt="Pipeline in five lanes. FlyWire data feeds the inside-only shuffle, which feeds shortcut statistics and 70 rate-model runs. Their reach goes to a gate asking whether the real brain is more focused than the inside-only shuffles (p &lt; 0.05 for both types): yes leads to scaling to 200 shuffles, no means skip scaling. Separately, Stürner's table and the real run's descending neurons feed behaviour labels, then the map comparison and leakage analysis. The same rewiring code feeds the Shiu spiking model. Results flow into the preprint." src="assets/pipeline-light.svg" width="100%">
+  <img alt="Pipeline in five lanes. FlyWire data feeds the inside-only shuffle, which feeds shortcut statistics and 70 rate-model runs. Their reach goes to a gate asking whether the real brain is more focused than the inside-only shuffles (p &lt; 0.05 for both types): yes leads to scaling to 200 shuffles, no means skip scaling. Separately, Stürner's table and the real run's descending neurons feed behaviour labels, then the map comparison and leakage analysis. The same rewiring code feeds the Shiu spiking model (6a), followed by a matched-activity check (6b) and, only if 6b says yes, a calibrated test (6c). Results flow into the preprint." src="assets/pipeline-light.svg" width="100%">
 </picture>
 
 Arrows are labelled with what moves between steps. Box outlines show status.

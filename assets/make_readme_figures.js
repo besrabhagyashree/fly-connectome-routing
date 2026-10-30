@@ -79,7 +79,7 @@ for(const [mode,c] of Object.entries(T)){
   fs.writeFileSync(`${OUT}/shuffles-${mode}.svg`,m);
 
   // Pipeline: swimlanes, labelled data flows, gate. Edit STATUS as steps progress.
-  const STATUS={data:'done',s1:'done',s2:'done',s3:'done',s4:'done',s5:'done',s6:'done',s7:'done',out:'wait'};
+  const STATUS={data:'done',s1:'done',s2:'done',s3:'done',s4:'done',s5:'done',s6:'done',s6b:'run',s6c:'wait',s7:'done',out:'wait'};
   const stc={done:mode==='light'?'#1f8a5c':'#3fcf98',run:c.amber,wait:c.muted};
   let p=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 470" ${F}><rect width="1250" height="470" fill="${c.bg}"/><defs>`;
   [['a',c.muted],['y',stc.done],['n',c.pink]].forEach(([k,f])=>{p+=`<marker id="p${k}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="${f}"/></marker>`});
@@ -106,7 +106,10 @@ for(const [mode,c] of Object.entries(T)){
   E('M395,114 V100 H1155 V190','same inside-only rewire code',775,94);
   E('M1040,220 H1060 V380 H1076');
   p+=`<path d="M1040,300 H1060" fill="none" stroke="${c.muted}" stroke-width="1.5"/>`;
-  E('M1155,246 V350');
+  E('M1155,246 V270');
+  E('M1155,326 V350','no',1163,342,'a','start');
+  E('M1110,326 V340 H965 V350','yes',1030,335);
+  E('M1040,380 H1076');
   const N=(x,y,t,sub,st)=>{const col=stc[st];
     p+=`<g transform="translate(${x},${y})"><rect width="150" height="52" rx="6" fill="${c.bg}" stroke="${col}" stroke-width="${st==='run'?2.5:1.5}"${st==='wait'?' stroke-dasharray="4 3"':''}/>`+
        `<circle cx="137" cy="12" r="5" fill="${col}"/><text x="12" y="23" font-size="13" font-weight="700" fill="${c.fg}">${t}</text>`+
@@ -119,7 +122,9 @@ for(const [mode,c] of Object.entries(T)){
      `<text x="0" y="-3" font-size="11" font-weight="700" fill="${c.fg}" text-anchor="middle">Real more focused</text>`+
      `<text x="0" y="11" font-size="11" font-weight="700" fill="${c.fg}" text-anchor="middle">than shuffles?</text></g>`;
   N(890,194,'Scale to 200','p floor 1/201',STATUS.s5);
-  N(1080,194,'Shiu spiking model','50 + 50 + 19 brains',STATUS.s6);
+  N(1080,194,'6a Shiu spiking','rule not met',STATUS.s6);
+  N(1080,274,'6b Quick check','real at ~177 active?',STATUS.s6b);
+  N(890,354,'6c Calibrated test','only if 6b says yes',STATUS.s6c);
   N(320,274,'Stürner DN table','1,315 DNs',STATUS.s3);
   N(510,274,'Behaviour labels','published only',STATUS.s3);
   N(700,274,'Simulation vs map','flow model',STATUS.s4);
