@@ -1,6 +1,6 @@
 # Step 8 plan — the rate-model test at gains where signals spread
 
-Written 30 Oct 2026 IST, before any step 8 simulation. **Draft: not run until Bhagyashree approves it.**
+Written 30 Oct 2026 IST, before any step 8 simulation. Approved by Bhagyashree Besra as drafted, 30 Oct 2026.
 
 ## Why
 
@@ -39,3 +39,8 @@ Stage 1: minutes. Stage 2: to be timed on one brain first; steps 1 and 5 took ab
 - Gain is one global number; real synapses are not scaled that way.
 - The rate model has no threshold like the spiking model's.
 - The primary-gain definition is a choice. The all-gains table lets a reader see whether the answer depends on it.
+
+## Definitions fixed before stage 1
+
+- **Active fraction:** the share of neurons with |activity| > 0.001 at the last step with all 7 sensory classes driven together, as in `calibrate_gain`.
+- **Direct-target share:** for each sense, the share of its |descending activity| on descending neurons with a direct connection from that sense; averaged over the 7 senses.
