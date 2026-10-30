@@ -1,6 +1,6 @@
 # Study conclusions
 
-Bhagyashree Besra, 30 Oct 2026, corrected the same day after an audit ([what changed](CORRECTIONS.md)). Not peer-reviewed. Covers steps 1–7 of the fruit fly connectome routing study. **The rate-model conclusions are provisional** until the gain sweep (`exp08_gain_sweep_plan.md`) has run.
+Bhagyashree Besra, 30 Oct 2026, corrected the same day after an audit ([what changed](CORRECTIONS.md)). Not peer-reviewed. Covers steps 1–7 of the fruit fly connectome routing study. **The rate-model conclusions are provisional:** the gain sweep (`exp08_notes.md`) gave no answer, so inside-only shuffles remain untested above gain 0.001.
 
 ## Question
 
@@ -58,7 +58,7 @@ So the inside wiring cannot be called unimportant. The disagreement may be a dif
 
 ## Open questions
 
-1. Does the rate-model result hold at gains where signals spread? Planned as step 8.
+1. Does the rate-model result hold at gains where signals spread? Step 8 gave no answer: at the highest gain tested (1.0), 61% of descending activity is still on direct targets, above the plan's 50% limit, so no shuffled brain was run.
 2. Whole input-response curves for real and shuffled brains in the spiking model, compared across input levels. Step 6c tried a single point and could not land on it.
 3. A planned test of which inside pathway carries sugar to MN9.
 
@@ -66,4 +66,4 @@ Each would be a new experiment, with its rule fixed first.
 
 ## Where the detail is
 
-Step notes are in `results/`: `exp01_notes.md` (September preliminary run; step 1's inside-only results are in `exp05_notes.md`), `dn_labels_summary.md`, `exp04_notes.md`, `exp04b_notes.md`, `exp05_notes.md`, `exp06_notes.md`, `exp06b_notes.md`, `exp06c_notes.md`, `exp07_notes.md`.
+Step notes are in `results/`: `exp01_notes.md` (September preliminary run; step 1's inside-only results are in `exp05_notes.md`), `dn_labels_summary.md`, `exp04_notes.md`, `exp04b_notes.md`, `exp05_notes.md`, `exp06_notes.md`, `exp06b_notes.md`, `exp06c_notes.md`, `exp07_notes.md`, `exp08_notes.md`.
