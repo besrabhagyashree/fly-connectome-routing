@@ -120,8 +120,9 @@ class Reservoir:
 
     def __init__(self, WT, input_idx, readout_idx, gain, amp=1.0):
         self.WT, self.inp, self.out, self.gain, self.amp = WT, input_idx, readout_idx, gain, amp
-        self.x = np.zeros(WT.shape[0], dtype=np.float32)
-        self.u = np.zeros(WT.shape[0], dtype=np.float32)
+        n = WT.shape[0] if WT is not None else int(input_idx.max()) + 1  # no wiring: eye cells only
+        self.x = np.zeros(n, dtype=np.float32)
+        self.u = np.zeros(n, dtype=np.float32)
 
     def reset(self):
         self.x[:] = 0

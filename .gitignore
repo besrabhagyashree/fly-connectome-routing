@@ -36,3 +36,7 @@ results/exp06b/
 
 # step 6c per-rate spike files
 results/exp06c/
+
+# step 9: worker claim files and per-worker CSVs (merged in exp09_pong_all.csv)
+results/exp09_claims/
+results/exp09_pong_w*.csv
