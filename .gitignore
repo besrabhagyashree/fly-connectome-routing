@@ -42,3 +42,5 @@ results/exp09_claims/
 results/exp09_pong_w*.csv
 results/exp10_tune_lr*.json
 results/exp10_pilot_progress.json
+results/exp10_claims/
+results/exp10_run_w*.json
